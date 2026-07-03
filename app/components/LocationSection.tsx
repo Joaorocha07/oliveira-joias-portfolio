@@ -111,7 +111,7 @@ export default function LocationSection() {
             </div>
 
             <a
-              href="https://wa.me/5534997717779?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Oliveira%20Joias."
+              href="https://wa.me/5534998717389?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Oliveira%20Joias."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold py-4 px-6 rounded-2xl transition-colors duration-200"

@@ -42,7 +42,7 @@ export default function Hero() {
             Conheça Nossas Alianças
           </Link>
           <a
-            href="https://wa.me/5534997717779?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Oliveira%20Joias."
+            href="https://wa.me/5534998717389?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Oliveira%20Joias."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold rounded-full transition-all duration-200 text-sm tracking-wide"

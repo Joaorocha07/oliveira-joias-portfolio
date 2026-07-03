@@ -20,7 +20,7 @@ export const categoryPaths: Record<Product['category'], string> = {
   'serviços': 'servicos',
 }
 
-const WHATSAPP_NUMBER = '5534997717779'
+const WHATSAPP_NUMBER = '5534998717389'
 
 export function buildWhatsAppUrl(productName: string) {
   const text = `Olá! Vi no site da Oliveira Joias o produto ${productName} e tenho interesse. Poderia me passar mais informações?`

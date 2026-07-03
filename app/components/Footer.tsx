@@ -74,12 +74,12 @@ export default function Footer() {
               <li className="flex gap-3 items-center">
                 <PhoneIcon />
                 <a
-                  href="https://wa.me/5534997717779"
+                  href="https://wa.me/5534998717389"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors"
                 >
-                  (34) 99771-7779
+                  (34) 99871-7389
                 </a>
               </li>
               <li className="mt-4">
