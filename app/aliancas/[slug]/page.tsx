@@ -9,6 +9,7 @@ import {
 } from '@/app/lib/products'
 import ImageGallery from '@/app/components/ImageGallery'
 import ProductCard from '@/app/components/ProductCard'
+import ProductDetailsInfo from '@/app/components/ProductDetailsInfo'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -112,6 +113,10 @@ export default async function ProductPage({ params }: Props) {
                 Resposta rápida · Atendimento personalizado
               </p>
             </div>
+          </div>
+
+          <div className="max-w-3xl">
+            <ProductDetailsInfo width={product.width} />
           </div>
         </div>
       </div>

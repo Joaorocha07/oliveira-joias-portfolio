@@ -19,20 +19,24 @@ export default function CategoriesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {topLines.map((line) => {
-            const featuredProduct = line.products[0]
+            const featuredProduct = line.products.find((p) => p.images[0]) ?? line.products[0]
             return (
               <Link
                 key={line.subcategory}
                 href={`/aliancas#${subcategoryAnchorId(line.subcategory)}`}
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
               >
-                <Image
-                  src={featuredProduct.images[0]}
-                  alt={line.subcategory}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
+                {featuredProduct.images[0] ? (
+                  <Image
+                    src={featuredProduct.images[0]}
+                    alt={line.subcategory}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gray-100" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="font-serif text-white text-xl font-bold mb-1">{line.subcategory}</h3>

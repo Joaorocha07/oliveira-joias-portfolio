@@ -21,6 +21,17 @@ export default function ImageGallery({ images, videos = [], productName }: Props
 
   const current = media[selected]
 
+  if (!current) {
+    return (
+      <div className="flex flex-col gap-4">
+        <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 shadow-md flex flex-col items-center justify-center gap-3 text-text/30">
+          <ImageOffIcon />
+          <span className="text-sm font-medium">Fotos em breve</span>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 shadow-md group">
@@ -90,6 +101,14 @@ function PlayIcon() {
   return (
     <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M8 5v14l11-7z" />
+    </svg>
+  )
+}
+
+function ImageOffIcon() {
+  return (
+    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3l18 18M9.5 5H18a2 2 0 012 2v10.5M4 7v10a2 2 0 002 2h10.5M4 15l4-4a2 2 0 012.8 0L14 14" />
     </svg>
   )
 }

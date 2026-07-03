@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   description:
     'Joalheria em Uberlândia-MG. Alianças, anéis, correntes e serviços especializados. Qualidade e tradição há anos no mercado.',
-  keywords: ['joias', 'alianças', 'joalheria', 'Uberlândia', 'ouro', 'anéis', 'correntes'],
+  keywords: ['joias', 'alianças', 'joalheria', 'Uberlândia', 'prata', 'anéis', 'correntes'],
   authors: [{ name: 'Oliveira Joias' }],
   openGraph: {
     type: 'website',

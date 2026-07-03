@@ -6,7 +6,7 @@ import ProductCard from '@/app/components/ProductCard'
 export const metadata: Metadata = {
   title: 'Alianças',
   description:
-    'Coleção completa de alianças da Oliveira Joias. Aurora, Classic, Lumina, Essenza e muito mais. Alianças em ouro com qualidade e tradição.',
+    'Coleção completa de alianças da Oliveira Joias. Aurora, Classic, Lumina, Essenza e muito mais. Alianças em prata com qualidade e tradição.',
 }
 
 export default function AliancasPage() {

@@ -13,14 +13,20 @@ export default function ProductCard({ product, showCategory = false }: Props) {
   return (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
       <Link href={href} className="block relative aspect-square overflow-hidden">
-        <Image
-          src={product.images[0]}
-          alt={product.name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          loading="lazy"
-        />
+        {product.images[0] ? (
+          <Image
+            src={product.images[0]}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading="lazy"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gray-50 flex items-center justify-center text-text/30 text-xs font-medium">
+            Foto em breve
+          </div>
+        )}
         {showCategory && (
           <div className="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-gold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-medium">
             {product.category}

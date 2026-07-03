@@ -38,7 +38,7 @@ export const products: Product[] = [
     subcategory: 'Aurora',
     description: 'Aliança com acabamento diamantado e risco lateral, para quem busca sofisticação e personalidade.',
     details: 'A Aurora Diamantada com Risco Lateral combina o brilho do acabamento diamantado com um delicado risco lateral que confere identidade única à peça. Design moderno e elegante, perfeito para eternizar momentos especiais.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/aurora_diamantada_com_risco_lateral_01.webp',
@@ -55,7 +55,7 @@ export const products: Product[] = [
     subcategory: 'Aurora Duo',
     description: 'Aliança Aurora Duo em 3mm com design duplo elegante e acabamento impecável.',
     details: 'A Aurora Duo 3mm apresenta um design inovador com dois elos unidos, simbolizando a união entre dois seres. Acabamento de alta qualidade com brilho duradouro.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/aurora_duo_3mm_01.webp',
@@ -78,7 +78,7 @@ export const products: Product[] = [
     subcategory: 'Aurora Duo',
     description: 'Aurora Duo com pedra central em destaque, unindo elegância e brilho em uma peça única.',
     details: 'A Aurora Duo com Pedra Central 3mm eleva o design da linha Aurora com a adição de uma pedra central que capta e reflete a luz de forma incomparável. Uma peça que expressa amor e distinção.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/aurora_duo_com_pedra_central_3mm_01.webp',
@@ -97,7 +97,7 @@ export const products: Product[] = [
     subcategory: 'Aurora',
     description: 'Design chanfrado moderno da linha Aurora Fusion, com borda diagonal que valoriza o acabamento.',
     details: 'A Aurora Fusion Chanfrada 3mm destaca-se pelo seu corte chanfrado que cria um jogo de luz e sombra único. Perfeita para quem busca modernidade e sofisticação.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/aurora_fusion_chanfrada_3mm_01.webp',
@@ -115,7 +115,7 @@ export const products: Product[] = [
     subcategory: 'Chanfrado',
     description: 'Aliança chanfrada delicada em 2mm, clássica e atemporal para uso diário.',
     details: 'A aliança Chanfrado 2mm é uma peça clássica que nunca sai de moda. Seu corte chanfrado sutil valoriza o anel no dedo, sendo ideal para quem prefere discrição e elegância.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '2mm',
     images: [
       '/images/chanfrado_2mm_01.webp',
@@ -132,7 +132,7 @@ export const products: Product[] = [
     subcategory: 'Chanfrado',
     description: 'Chanfrado com textura diamantada que amplifica o brilho da peça em cada movimento.',
     details: 'A aliança Chanfrado Diamantado 2mm une o clássico corte chanfrado com o sofisticado acabamento diamantado. O resultado é uma peça de alto brilho que impressiona a cada movimento.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '2mm',
     images: [
       '/images/chanfrado_diamantado_2mm_01.webp',
@@ -150,7 +150,7 @@ export const products: Product[] = [
     subcategory: 'Comfort One',
     description: 'Aliança abaulada confortável em 2mm, com interior arredondado para o uso diário perfeito.',
     details: 'A Comfort One Abaulada 2mm é sinônimo de conforto e elegância. Seu interior arredondado (comfort fit) permite uso prolongado sem desconforto. Perfeita para o dia a dia.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '2mm',
     images: [
       '/images/comfort_one_abaulada_2mm_01.webp',
@@ -169,7 +169,7 @@ export const products: Product[] = [
     subcategory: 'Essenza',
     description: 'Linha Essenza em 3mm: minimalismo sofisticado que captura a essência da elegância.',
     details: 'A Essenza Line 3mm traz o conceito de beleza essencial em cada detalhe. Linhas puras e acabamento impecável definem esta peça que é ao mesmo tempo simples e marcante.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/essenza_line_3mm_01.webp',
@@ -188,7 +188,7 @@ export const products: Product[] = [
     subcategory: 'Lumina',
     description: 'Lumina Crystal com cristais que capturam e refletem a luz em cada ângulo.',
     details: 'A Lumina Crystal 3mm é a escolha perfeita para quem ama brilho. Os cristais embutidos criam um efeito luminoso deslumbrante, transformando cada momento em algo ainda mais especial.',
-    material: 'Ouro com cristais',
+    material: 'Prata com cristais',
     width: '3mm',
     images: [
       '/images/lumina_crystal_3mm_01.webp',
@@ -205,7 +205,7 @@ export const products: Product[] = [
     subcategory: 'Lumina',
     description: 'Aliança Lumina Duo em 3mm: dois elementos em harmonia perfeita para celebrar a união.',
     details: 'A Lumina Duo 3mm combina dois elos em harmonia, representando a parceria e cumplicidade de uma vida a dois. Acabamento polido que realça a qualidade do material.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/lumina_duo_3mm_01.webp',
@@ -223,7 +223,7 @@ export const products: Product[] = [
     subcategory: 'Lumina',
     description: 'Lumina Duo com pedra colorida central, adicionando personalidade e cor ao seu símbolo de amor.',
     details: 'A Lumina Duo com Pedra Colorida 3mm personaliza a tradição com uma pedra colorida que representa a unicidade do casal. Uma escolha ousada e apaixonante.',
-    material: 'Ouro com pedra colorida',
+    material: 'Prata com pedra colorida',
     width: '3mm',
     images: [
       '/images/lumina_duo_pedra_colorida_3mm_01.webp',
@@ -240,7 +240,7 @@ export const products: Product[] = [
     subcategory: 'Aurora',
     description: 'Aurora Diamantada delicada em 2mm, para quem prefere discrição com muito brilho.',
     details: 'O Modelo Aurora Diamantada 2mm oferece o sofisticado acabamento diamantado em uma versão mais delicada e discreta. Ideal para uso diário ou como complemento a outras peças.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '2mm',
     images: [
       '/images/modelo_aurora_diamantada_2mm_01.webp',
@@ -257,7 +257,7 @@ export const products: Product[] = [
     subcategory: 'Aurora',
     description: 'Aurora Diamantada em 3mm com presença marcante e brilho que conquista olhares.',
     details: 'O Modelo Aurora Diamantada 3mm é a versão com mais presença da linha Aurora Diamantada. Seu acabamento diamantado em 3mm garante um visual imponente e sofisticado.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/modelo_aurora_diamantada_3mm_01.webp',
@@ -274,14 +274,15 @@ export const products: Product[] = [
     subcategory: 'Classic',
     description: 'A clássica aliança reta em 2mm: tradição e elegância que nunca saem de moda.',
     details: 'O Modelo Classic Reta 2mm é a essência da tradição em joalheria. Linhas retas e puras que transmitem serenidade e elegância atemporal. A escolha perfeita para quem valoriza o clássico.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '2mm',
     images: [
-      '/images/modelo_classic_reta_2mm_01.webp',
-      '/images/modelo_classic_reta_2mm_02.webp',
-      '/images/modelo_classic_reta_2mm_03.webp',
-      '/images/modelo_classic_reta_2mm_04.webp',
-      '/images/modelo_classic_reta_2mm_05.webp',
+      '/images/modelo_classic_reta_2mm_teste_01.webp',
+      '/images/modelo_classic_reta_2mm_teste_02.webp',
+      '/images/modelo_classic_reta_2mm_teste_03.webp',
+      '/images/modelo_classic_reta_2mm_teste_04.webp',
+      '/images/modelo_classic_reta_2mm_teste_05.webp',
+      '/images/modelo_classic_reta_2mm_teste_06.webp',
     ],
     featured: false,
   },
@@ -293,7 +294,7 @@ export const products: Product[] = [
     subcategory: 'Classic',
     description: 'Classic Reta em 3mm com maior presença e o mesmo charme clássico que atravessa gerações.',
     details: 'O Modelo Classic Reta 3mm oferece um visual mais marcante mantendo a pureza clássica da linha. Ideal para quem busca uma aliança tradicional com mais destaque.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/modelo_classic_reta_3mm_01.webp',
@@ -310,7 +311,7 @@ export const products: Product[] = [
     subcategory: 'Classic',
     description: 'Classic Reta com risco central em 3mm: o clássico elevado com um toque de personalidade.',
     details: 'O Modelo Classic Reta com Risco Central 3mm adiciona um detalhe sutil — o risco central — que transforma uma aliança tradicional em uma peça com identidade própria. Elegância e personalidade em equilíbrio perfeito.',
-    material: 'Ouro',
+    material: 'Prata',
     width: '3mm',
     images: [
       '/images/modelo_classic_reta_com_risco_central_3mm_01.webp',
