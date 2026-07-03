@@ -36,7 +36,7 @@ export default function LocationSection() {
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.1!2d-48.2!3d-18.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDU0JzAwLjAiUyA0OMKwMTInMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr&q=Av.+Seme+Sim%C3%A3o%2C+1281+-+Granada%2C+Uberl%C3%A2ndia+-+MG"
+              src="https://www.google.com/maps?q=Av.+Seme+Sim%C3%A3o%2C+1281+-+Loja+01+-+Granada%2C+Uberl%C3%A2ndia+-+MG%2C+38410-094&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '350px' }}
@@ -63,7 +63,7 @@ export default function LocationSection() {
                 CEP: 38410-094
               </p>
               <a
-                href="https://maps.google.com/?q=Av.+Seme+Simão+1281+Granada+Uberlândia+MG"
+                href="https://maps.google.com/?q=Av.+Seme+Simão,+1281+-+Loja+01+-+Granada,+Uberlândia+-+MG,+38410-094"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-gold text-sm font-medium mt-3 hover:underline"
