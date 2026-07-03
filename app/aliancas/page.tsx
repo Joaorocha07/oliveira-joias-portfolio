@@ -17,7 +17,7 @@ export default function AliancasPage() {
     <>
       <section className="relative h-72 sm:h-96 flex items-end overflow-hidden">
         <Image
-          src="/images/capa-mobile-aliancas.png"
+          src="/images/colecao-copa-do-mundo-mobile.png"
           alt="Coleção de Alianças Oliveira Joias"
           fill
           className="object-cover object-[50%_70%] sm:hidden"
@@ -25,7 +25,7 @@ export default function AliancasPage() {
           sizes="100vw"
         />
         <Image
-          src="/images/capa-desktop-aliancas.png"
+          src="/images/colecao-copa-do-mundo-desktop.png"
           alt="Coleção de Alianças Oliveira Joias"
           fill
           className="object-cover object-[75%_68%] hidden sm:block"

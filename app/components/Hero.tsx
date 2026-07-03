@@ -5,10 +5,18 @@ export default function Hero() {
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       <Image
-        src="/images/aurora_duo_3mm_01.webp"
+        src="/images/background-copa-do-mundo-mobile.png"
         alt="Alianças Oliveira Joias"
         fill
-        className="object-cover object-center"
+        className="object-cover object-center md:hidden"
+        priority
+        sizes="100vw"
+      />
+      <Image
+        src="/images/background-copa-do-mundo-desktop.png"
+        alt="Alianças Oliveira Joias"
+        fill
+        className="object-cover object-center hidden md:block"
         priority
         sizes="100vw"
       />
