@@ -47,6 +47,13 @@ export default function ProductCard({ product, showCategory = false }: Props) {
           {product.description}
         </p>
 
+        {product.installments && product.cashPrice && (
+          <div className="mb-5 border-t border-gray-100 pt-4">
+            <p className="font-semibold text-dark">{product.installments}</p>
+            <p className="mt-1 text-xs text-text/55">{product.cashPrice}</p>
+          </div>
+        )}
+
         <Link
           href={href}
           className="flex items-center justify-center gap-2 w-full bg-dark hover:bg-gold hover:text-dark text-white text-sm font-semibold py-3 px-4 rounded-xl transition-colors duration-200"

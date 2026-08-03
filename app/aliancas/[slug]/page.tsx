@@ -17,7 +17,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const product = getProductBySlug(slug)
+  const product = await getProductBySlug(slug)
   if (!product) return {}
   return {
     title: product.name,
@@ -26,17 +26,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const products = getProductsByCategory('alianças')
+  const products = await getProductsByCategory('alianças')
   return products.map((p) => ({ slug: p.slug }))
 }
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params
-  const product = getProductBySlug(slug)
+  const product = await getProductBySlug(slug)
 
   if (!product) notFound()
 
-  const related = getRelatedProducts(product, 4)
+  const related = await getRelatedProducts(product, 4)
   const whatsappUrl = buildWhatsAppUrl(product.name)
 
   return (
@@ -74,6 +74,14 @@ export default async function ProductPage({ params }: Props) {
               <p className="text-text/70 leading-relaxed mb-8 text-base">
                 {product.details}
               </p>
+
+              {product.installments && product.cashPrice && (
+                <div className="mb-8 rounded-2xl border border-gold/20 bg-gold/5 p-5">
+                  <p className="text-xs font-medium uppercase tracking-widest text-gold-dark">Valor do par</p>
+                  <p className="mt-2 font-serif text-2xl font-bold text-dark">{product.installments}</p>
+                  <p className="mt-1 text-sm text-text/60">{product.cashPrice}</p>
+                </div>
+              )}
 
               <div className="border-t border-gray-100 pt-8 mb-8">
                 <h2 className="font-serif text-dark font-bold text-lg mb-4">Especificações</h2>

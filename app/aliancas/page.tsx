@@ -9,9 +9,9 @@ export const metadata: Metadata = {
     'Coleção completa de alianças da Oliveira Joias. Aurora, Classic, Lumina, Essenza e muito mais. Alianças em prata com qualidade e tradição.',
 }
 
-export default function AliancasPage() {
-  const products = getProductsByCategory('alianças')
-  const groups = getProductsGroupedBySubcategory('alianças')
+export default async function AliancasPage() {
+  const products = await getProductsByCategory('alianças')
+  const groups = await getProductsGroupedBySubcategory('alianças')
 
   return (
     <>

@@ -6,8 +6,8 @@ import Link from 'next/link'
 const navLinks = [
   { href: '/', label: 'Início' },
   { href: '/aliancas', label: 'Alianças' },
-  { href: '/#categorias', label: 'Categorias' },
-  { href: '/#sobre', label: 'Sobre' },
+  { href: '/#como-funciona', label: 'Como funciona' },
+  { href: '/#duvidas', label: 'Dúvidas' },
   { href: '/#localizacao', label: 'Contato' },
 ]
 

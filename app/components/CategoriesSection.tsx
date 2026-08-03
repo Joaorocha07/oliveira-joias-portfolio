@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getTopSubcategories, subcategoryAnchorId } from '@/app/lib/products'
 
-export default function CategoriesSection() {
-  const topLines = getTopSubcategories('alianças', 4)
+export default async function CategoriesSection() {
+  const topLines = await getTopSubcategories('alianças', 4)
 
   return (
     <section id="categorias" className="py-20 lg:py-28 bg-cream">

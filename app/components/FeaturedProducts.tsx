@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { getFeaturedProducts } from '@/app/lib/products'
 import ProductCard from './ProductCard'
 
-export default function FeaturedProducts() {
-  const products = getFeaturedProducts()
+export default async function FeaturedProducts() {
+  const products = await getFeaturedProducts()
 
   return (
     <section className="py-20 lg:py-28 bg-white">

@@ -3,26 +3,20 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[640px] h-[92vh] items-center overflow-hidden">
       <Image
-        src="/images/background-copa-do-mundo-mobile.png"
-        alt="Alianças Oliveira Joias"
+        src="/banner-principal.png"
+        alt="Alianças e anel de noivado Oliveira Joias"
         fill
-        className="object-cover object-center md:hidden"
+        className="object-cover object-[68%_center] sm:object-[62%_center] lg:object-center"
         priority
         sizes="100vw"
       />
-      <Image
-        src="/images/background-copa-do-mundo-desktop.png"
-        alt="Alianças Oliveira Joias"
-        fill
-        className="object-cover object-center hidden md:block"
-        priority
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/50 to-dark/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-dark/65 via-transparent to-dark/25" />
 
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 text-white sm:px-6 lg:px-8">
+        <div className="max-w-2xl text-left">
         <p className="text-gold text-sm sm:text-base tracking-[0.3em] uppercase mb-4 font-medium">
           Uberlândia — MG
         </p>
@@ -30,11 +24,11 @@ export default function Hero() {
           Joias que contam<br />
           <span className="text-gold">a sua história</span>
         </h1>
-        <p className="text-white/75 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-white/75 text-base sm:text-lg lg:text-xl max-w-xl mb-10 leading-relaxed">
           Tradição e qualidade em joias para o seu momento especial.
           Alianças, anéis e correntes com o brilho que você merece.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
           <Link
             href="/aliancas"
             className="inline-flex items-center justify-center px-8 py-4 bg-gold hover:bg-gold-dark text-dark font-semibold rounded-full transition-all duration-200 text-sm tracking-wide"
@@ -52,6 +46,7 @@ export default function Hero() {
             </svg>
             Fale Conosco no WhatsApp
           </a>
+        </div>
         </div>
       </div>
 
