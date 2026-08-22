@@ -1,82 +1,57 @@
 import Image from 'next/image'
 
-export default function AboutSection() {
-  const values = [
-    {
-      icon: <DiamondIcon />,
-      title: 'Qualidade',
-      text: 'Cada peça é selecionada com rigoroso controle de qualidade para garantir beleza e durabilidade.',
-    },
-    {
-      icon: <HeartIcon />,
-      title: 'Tradição',
-      text: 'Anos de experiência no mercado de joias, carregando a confiança de famílias inteiras.',
-    },
-    {
-      icon: <StarIcon />,
-      title: 'Atendimento',
-      text: 'Atendimento personalizado para que você encontre a joia perfeita para o seu momento.',
-    },
-  ]
+const WA_URL = 'https://wa.me/5534998717389?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20Oliveira%20Joias.'
 
+export default function AboutSection() {
   return (
-    <section id="sobre" className="py-20 lg:py-28 bg-white">
+    <section id="sobre" className="bg-[#17120d] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/essenza_line_3mm_01.webp"
-                alt="Oliveira Joias — Elegância em cada detalhe"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden sm:block">
-              <Image
-                src="/images/lumina_crystal_3mm_01.webp"
-                alt="Detalhe de joia Oliveira Joias"
-                fill
-                className="object-cover"
-                sizes="192px"
-              />
-            </div>
-            <div className="absolute -top-4 -left-4 bg-gold text-dark px-5 py-3 rounded-xl shadow-lg hidden sm:block">
-              <p className="font-serif text-2xl font-bold leading-none">10+</p>
-              <p className="text-xs font-medium uppercase tracking-wide mt-1">Anos no mercado</p>
-            </div>
+        <div className="grid lg:grid-cols-2 items-center gap-0">
+          <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[520px]">
+            <Image
+              src="/images/gold.webp"
+              alt="Joias Oliveira — caixa de veludo com alianças"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#17120d]/60 hidden lg:block" />
           </div>
 
-          <div>
-            <p className="text-gold text-sm tracking-widest uppercase font-medium mb-3">
-              Sobre nós
+          <div className="py-16 lg:py-20 lg:pl-14">
+            <p className="text-[11px] text-gold tracking-[0.2em] uppercase font-medium mb-5">
+              Atendimento personalizado
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-dark leading-tight mb-6">
-              Elegância e tradição<br />
-              <span className="text-gold">em cada peça</span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] leading-tight font-medium mb-6">
+              Vamos encontrar o símbolo<br className="hidden sm:block" /> do seu amor?
             </h2>
-            <p className="text-text/70 leading-relaxed mb-4 text-base">
-              A Oliveira Joias é referência em Uberlândia quando o assunto é qualidade e elegância.
-              Com anos de experiência no mercado, oferecemos peças exclusivas que eternizam os
-              momentos mais especiais da sua vida.
-            </p>
-            <p className="text-text/70 leading-relaxed mb-10 text-base">
-              Cada joia é selecionada com carinho para garantir beleza, durabilidade e um brilho
-              incomparável. Venha nos visitar e descobrir a peça perfeita para o seu momento.
+            <p className="text-white/65 leading-relaxed mb-4">
+              Conte para nossa equipe a ocasião, material, estilo e orçamento. A partir disso, ajudamos você a comparar modelos e tomar a decisão com segurança.
             </p>
 
-            <div className="grid sm:grid-cols-3 gap-6">
-              {values.map((v) => (
-                <div key={v.title} className="text-center sm:text-left">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-gold/10 rounded-xl text-gold mb-3">
-                    {v.icon}
-                  </div>
-                  <h3 className="font-serif text-dark font-bold text-lg mb-1">{v.title}</h3>
-                  <p className="text-text/60 text-sm leading-relaxed">{v.text}</p>
-                </div>
+            <ul className="space-y-2.5 my-7">
+              {[
+                'Atendimento rápido e humanizado',
+                'Orçamento direto no WhatsApp',
+                'Personalizações sob consulta',
+                'Fabricação em até 72h úteis para peças de prata sob encomenda',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm text-white/80">
+                  <span className="text-[#f0ce86] font-bold mt-0.5">✓</span>
+                  {item}
+                </li>
               ))}
-            </div>
+            </ul>
+
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-whatsapp hover:bg-whatsapp-dark text-white font-bold px-6 py-3.5 rounded-lg transition-colors duration-200 text-sm"
+            >
+              <WhatsAppIcon />
+              Falar com a Oliveira Joias
+            </a>
           </div>
         </div>
       </div>
@@ -84,26 +59,10 @@ export default function AboutSection() {
   )
 }
 
-function DiamondIcon() {
+function WhatsAppIcon() {
   return (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3H5l-3 6 10 12L22 9l-3-6h-4m-6 0h6m-6 0L9 9m6-6L15 9m-6 0h6" />
-    </svg>
-  )
-}
-
-function HeartIcon() {
-  return (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-    </svg>
-  )
-}
-
-function StarIcon() {
-  return (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
     </svg>
   )
 }

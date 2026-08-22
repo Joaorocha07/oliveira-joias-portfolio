@@ -4,24 +4,29 @@ export type Product = {
   id: string
   slug: string
   name: string
-  category: 'alianças' | 'anéis' | 'correntes' | 'serviços'
+  category: string
   subcategory: string
   description: string
   details: string
   material: string
   width: string
+  valor: number
   installments?: string
   cashPrice?: string
   images: string[]
   videos?: string[]
   featured: boolean
+  ordem: number | null
 }
 
-export const categoryPaths: Record<Product['category'], string> = {
+export const categoryPaths: Record<string, string> = {
   'alianças': 'aliancas',
   'anéis': 'aneis',
   'correntes': 'correntes',
   'serviços': 'servicos',
+  'moeda antiga': 'aliancas',
+  'ouro': 'aliancas',
+  'prata': 'aliancas',
 }
 
 const WHATSAPP_NUMBER = '5534998717389'
@@ -41,9 +46,12 @@ export async function getProductBySlug(slug: string): Promise<Product | undefine
   return fetchProductBySlug(slug)
 }
 
-export async function getProductsByCategory(category: Product['category']): Promise<Product[]> {
+export async function getProductsByCategory(category: string): Promise<Product[]> {
   const products = await getAllProducts()
-  return products.filter((p) => p.category === category)
+  const routePath = categoryPaths[category]
+  return products.filter(
+    (p) => p.category === category || (routePath && categoryPaths[p.category] === routePath)
+  )
 }
 
 export async function getFeaturedProducts(): Promise<Product[]> {
@@ -59,7 +67,7 @@ export async function getRelatedProducts(product: Product, limit = 4): Promise<P
 }
 
 export async function getProductsGroupedBySubcategory(
-  category: Product['category']
+  category: string
 ): Promise<{ subcategory: string; products: Product[] }[]> {
   const groups: { subcategory: string; products: Product[] }[] = []
   for (const product of await getProductsByCategory(category)) {
@@ -74,7 +82,7 @@ export async function getProductsGroupedBySubcategory(
 }
 
 export async function getTopSubcategories(
-  category: Product['category'],
+  category: string,
   limit = 4
 ): Promise<{ subcategory: string; products: Product[] }[]> {
   const groups = await getProductsGroupedBySubcategory(category)

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #c9a96e;
-  --color-gold-light: #e0c899;
+  --color-gold: #c8a15a;
+  --color-gold-light: #f0ce86;
   --color-gold-dark: #a8874e;
-  --color-dark: #1a1a1a;
-  --color-dark-soft: #2a2a2a;
+  --color-dark: #111111;
+  --color-dark-soft: #1c1c1d;
   --color-whatsapp: #25D366;
-  --color-whatsapp-dark: #1da851;
-  --color-cream: #fafafa;
-  --color-text: #333333;
+  --color-whatsapp-dark: #1fb85a;
+  --color-cream: #f8f7f4;
+  --color-text: #1a1a1a;
 
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -26,6 +26,16 @@
 @keyframes pulse-slow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
   50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
+@keyframes popup-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 html {

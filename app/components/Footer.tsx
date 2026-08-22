@@ -2,37 +2,60 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="lg:col-span-1">
+    <footer id="contato" className="bg-[#0e0e0f] text-white pt-14 pb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1.2fr] gap-10 pb-12 border-b border-white/10">
+          <div>
             <div className="mb-4">
-              <span className="font-serif text-2xl font-bold text-gold">Oliveira Joias</span>
-              <p className="text-white/50 text-xs tracking-widest uppercase mt-1">
-                Elegância em cada peça
-              </p>
+              <span className="font-serif text-2xl font-semibold text-white tracking-[0.15em]">OLIVEIRA</span>
+              <span className="block text-[9px] text-gold tracking-[0.42em] uppercase -mt-0.5">JOIAS</span>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed">
-              Referência em joalheria em Uberlândia-MG. Qualidade, tradição e atendimento personalizado há anos no mercado.
+            <p className="text-white/50 text-sm leading-relaxed">
+              Alianças e joias para transformar momentos importantes em histórias para a vida toda.
             </p>
+            <div className="flex gap-2.5 mt-5">
+              <a
+                href="https://instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-8 h-8 border border-white/20 hover:border-gold rounded-full grid place-items-center text-white/60 hover:text-gold transition-colors duration-200 text-sm"
+              >
+                ◎
+              </a>
+              <a
+                href="https://facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-8 h-8 border border-white/20 hover:border-gold rounded-full grid place-items-center text-white/60 hover:text-gold transition-colors duration-200 text-sm font-bold"
+              >
+                f
+              </a>
+              <a
+                href="https://wa.me/5534998717389"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-8 h-8 border border-white/20 hover:border-gold rounded-full grid place-items-center text-white/60 hover:text-gold transition-colors duration-200 text-sm"
+              >
+                ◔
+              </a>
+            </div>
           </div>
 
           <div>
-            <h3 className="font-serif text-gold text-lg mb-5">Navegação</h3>
-            <ul className="space-y-3">
+            <h4 className="text-[11px] text-[#f0ce86] tracking-[0.15em] uppercase font-medium mb-4">Menu</h4>
+            <ul className="space-y-2.5">
               {[
                 { href: '/', label: 'Início' },
-                { href: '/aliancas', label: 'Alianças' },
-                { href: '/#categorias', label: 'Categorias' },
-                { href: '/#sobre', label: 'Sobre Nós' },
-                { href: '/#localizacao', label: 'Localização' },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-white/60 hover:text-gold transition-colors text-sm"
-                  >
-                    {link.label}
+                { href: '/#materiais', label: 'Materiais' },
+                { href: '/aliancas', label: 'Catálogo' },
+                { href: '/#sobre', label: 'Sobre nós' },
+              ].map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className="text-white/55 hover:text-gold transition-colors text-sm">
+                    {l.label}
                   </Link>
                 </li>
               ))}
@@ -40,20 +63,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-serif text-gold text-lg mb-5">Categorias</h3>
-            <ul className="space-y-3">
+            <h4 className="text-[11px] text-[#f0ce86] tracking-[0.15em] uppercase font-medium mb-4">Materiais</h4>
+            <ul className="space-y-2.5">
               {[
-                { href: '/aliancas', label: 'Alianças' },
-                { href: '/#categorias', label: 'Anéis' },
-                { href: '/#categorias', label: 'Correntes & Pingentes' },
-                { href: '/#categorias', label: 'Serviços' },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-white/60 hover:text-gold transition-colors text-sm"
-                  >
-                    {link.label}
+                { href: '/aliancas', label: 'Alianças de Prata' },
+                { href: '/aliancas', label: 'Moeda Antiga' },
+                { href: '/aliancas', label: 'Alianças de Ouro' },
+              ].map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className="text-white/55 hover:text-gold transition-colors text-sm">
+                    {l.label}
                   </Link>
                 </li>
               ))}
@@ -61,63 +80,46 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-serif text-gold text-lg mb-5">Contato</h3>
-            <ul className="space-y-3 text-sm text-white/60">
-              <li className="flex gap-3">
-                <MapPinIcon />
-                <span>
-                  Av. Seme Simão, 1281 — Loja 01<br />
-                  Granada, Uberlândia-MG<br />
-                  CEP: 38410-094
-                </span>
-              </li>
-              <li className="flex gap-3 items-center">
-                <PhoneIcon />
-                <a
-                  href="https://wa.me/5534998717389"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gold transition-colors"
-                >
-                  (34) 99871-7389
-                </a>
-              </li>
-              <li className="mt-4">
-                <p className="text-white/40 text-xs uppercase tracking-wide mb-2">Horário</p>
-                <p>Seg–Sex: 09:00–19:00</p>
-                <p>Sábado: 09:00–14:00</p>
-                <p>Domingo: Fechado</p>
-              </li>
+            <h4 className="text-[11px] text-[#f0ce86] tracking-[0.15em] uppercase font-medium mb-4">Informações</h4>
+            <ul className="space-y-2.5">
+              {['Garantia', 'Cuidados com sua joia', 'Trocas e ajustes'].map((l) => (
+                <li key={l}>
+                  <span className="text-white/55 text-sm cursor-default">{l}</span>
+                </li>
+              ))}
             </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[11px] text-[#f0ce86] tracking-[0.15em] uppercase font-medium mb-4">Atendimento</h4>
+            <p className="text-white/55 text-sm leading-relaxed mb-1">Av. Seme Simão, 1281 — Bairro Granada</p>
+            <p className="text-white/55 text-sm mb-1">WhatsApp: (34) 99871-7389</p>
+            <p className="text-white/55 text-sm mb-4">Uberlândia · MG</p>
+            <a
+              href="https://wa.me/5534998717389?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Oliveira%20Joias%20e%20gostaria%20de%20atendimento."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-whatsapp hover:bg-whatsapp-dark text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-colors duration-200 mb-2"
+            >
+              Chamar no WhatsApp
+            </a>
+            <br />
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Avenida+Seme+Sim%C3%A3o+1281+Bairro+Granada+Uberl%C3%A2ndia+MG"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-white/20 hover:border-gold text-white/60 hover:text-gold text-xs font-bold px-4 py-2.5 rounded-lg transition-all duration-200"
+            >
+              Como chegar
+            </a>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Oliveira Joias — Elegância em cada detalhe.
-          </p>
-          <p className="text-white/20 text-xs">
-            Uberlândia — MG — Brasil
-          </p>
+        <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-white/30 text-xs">© {new Date().getFullYear()} Oliveira Joias. Todos os direitos reservados.</p>
+          <p className="text-white/20 text-xs">Desenvolvido para transformar visitas em conversas.</p>
         </div>
       </div>
     </footer>
-  )
-}
-
-function MapPinIcon() {
-  return (
-    <svg className="w-4 h-4 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-    </svg>
-  )
-}
-
-function PhoneIcon() {
-  return (
-    <svg className="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-    </svg>
   )
 }

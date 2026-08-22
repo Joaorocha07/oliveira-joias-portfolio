@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import PopupManager from './components/PopupManager'
 
 const playfair = Playfair_Display({
   variable: '--font-serif',
@@ -40,9 +41,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-cream text-text antialiased" suppressHydrationWarning>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-[72px] sm:pt-[108px]">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <PopupManager />
       </body>
     </html>
   )

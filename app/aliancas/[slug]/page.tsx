@@ -7,6 +7,7 @@ import {
   getRelatedProducts,
   buildWhatsAppUrl,
 } from '@/app/lib/products'
+import { fetchCatalogoConfig } from '@/app/lib/api'
 import ImageGallery from '@/app/components/ImageGallery'
 import ProductCard from '@/app/components/ProductCard'
 import ProductDetailsInfo from '@/app/components/ProductDetailsInfo'
@@ -32,7 +33,10 @@ export async function generateStaticParams() {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params
-  const product = await getProductBySlug(slug)
+  const [product, config] = await Promise.all([
+    getProductBySlug(slug),
+    fetchCatalogoConfig(),
+  ])
 
   if (!product) notFound()
 
@@ -124,7 +128,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           <div className="max-w-3xl">
-            <ProductDetailsInfo width={product.width} />
+            <ProductDetailsInfo width={product.width} config={config} />
           </div>
         </div>
       </div>
