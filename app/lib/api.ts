@@ -80,10 +80,9 @@ function mapProduct(p: ApiProduto): Product {
     width: p.largura ?? '',
     valor: p.valor,
     installments: p.parcelas && valorParcela
-      ? `${p.parcelas}x de ${formatBRL(valorParcela)}${hasJuros ? ' com juros' : ' sem juros'}`
+      ? `${p.parcelas}x de ${formatBRL(valorParcela)} sem juros`
       : undefined,
     cashPrice: p.valor > 0 ? `${formatBRL(p.valor)} à vista` : undefined,
-    valorTotalParcelado: hasJuros && totalParcelado ? totalParcelado : undefined,
     images: p.imagens,
     featured: p.destaque,
     ordem: p.ordem,

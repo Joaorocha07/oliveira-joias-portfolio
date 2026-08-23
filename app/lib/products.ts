@@ -13,7 +13,6 @@ export type Product = {
   valor: number
   installments?: string
   cashPrice?: string
-  valorTotalParcelado?: number
   images: string[]
   videos?: string[]
   featured: boolean

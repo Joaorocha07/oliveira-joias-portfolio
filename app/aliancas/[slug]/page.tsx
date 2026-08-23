@@ -83,11 +83,6 @@ export default async function ProductPage({ params }: Props) {
                 <div className="mb-8 rounded-2xl border border-gold/20 bg-gold/5 p-5">
                   <p className="text-xs font-medium uppercase tracking-widest text-gold-dark">Valor do par</p>
                   <p className="mt-2 font-serif text-2xl font-bold text-dark">{product.installments}</p>
-                  {product.valorTotalParcelado && (
-                    <p className="mt-0.5 text-sm text-text/70">
-                      Total parcelado: R$ {product.valorTotalParcelado.toFixed(2).replace('.', ',')}
-                    </p>
-                  )}
                   <p className="mt-1 text-sm text-text/60">{product.cashPrice}</p>
                 </div>
               )}
