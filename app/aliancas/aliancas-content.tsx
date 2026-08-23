@@ -69,18 +69,17 @@ function FilterSelect({
   )
 }
 
-export default function AliancasContent({ products }: { products: Product[] }) {
+export default function AliancasContent({ products, categorias }: { products: Product[]; categorias: string[] }) {
   const [busca, setBusca] = useState('')
   const [material, setMaterial] = useState('')
   const [largura, setLargura] = useState('')
   const [acabamento, setAcabamento] = useState('')
   const [faixaPreco, setFaixaPreco] = useState('')
 
-  const materiais = useMemo(() => {
-    const s = new Set<string>()
-    for (const p of products) if (p.material) s.add(p.material)
-    return [...s].sort()
-  }, [products])
+  const materiais = useMemo(
+    () => [...categorias].sort((a, b) => a.localeCompare(b, 'pt-BR')),
+    [categorias],
+  )
 
   const larguras = useMemo(() => {
     const s = new Set<string>()
@@ -99,7 +98,7 @@ export default function AliancasContent({ products }: { products: Product[] }) {
   const filtered = useMemo(() => {
     return products.filter((p) => {
       if (busca && !p.name.toLowerCase().includes(busca.toLowerCase())) return false
-      if (material && p.material !== material) return false
+      if (material && p.category.toLowerCase() !== material.toLowerCase()) return false
       if (largura && p.width !== largura) return false
       if (acabamento && p.subcategory !== acabamento) return false
       if (faixaPreco) {
@@ -202,24 +201,6 @@ export default function AliancasContent({ products }: { products: Product[] }) {
         </div>
       </div>
 
-      {/* Sub-nav por linha — só aparece sem filtros ativos e com múltiplos grupos */}
-      {!hasActiveFilters && groups.length > 1 && (
-        <nav className="sticky top-[72px] sm:top-[108px] z-30 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap gap-2">
-            {groups.map((group) => (
-              <a
-                key={group.subcategory || '__sem_linha__'}
-                href={`#${subcategoryAnchorId(group.subcategory || 'todos')}`}
-                className="text-xs uppercase tracking-wide font-medium px-4 py-2 rounded-full border border-gold/30 text-gold-dark hover:bg-gold hover:text-dark hover:border-gold transition-all duration-200"
-              >
-                {group.subcategory || 'Todos'}
-                <span className="text-text/40 ml-1.5">({group.products.length})</span>
-              </a>
-            ))}
-          </div>
-        </nav>
-      )}
-
       {/* Grid de produtos */}
       <section className="py-16 lg:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
@@ -252,8 +233,17 @@ export default function AliancasContent({ products }: { products: Product[] }) {
               <svg className="w-12 h-12 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
               </svg>
-              <p className="font-serif text-2xl mb-2">Nenhum modelo encontrado</p>
-              <p className="text-sm mb-5">Tente ajustar os filtros para ver mais opções.</p>
+              {material && !busca && !largura && !acabamento && !faixaPreco ? (
+                <>
+                  <p className="font-serif text-2xl mb-2">Nenhum produto cadastrado</p>
+                  <p className="text-sm mb-5">Não há produto cadastrado para esse material ainda.</p>
+                </>
+              ) : (
+                <>
+                  <p className="font-serif text-2xl mb-2">Nenhum modelo encontrado</p>
+                  <p className="text-sm mb-5">Tente ajustar os filtros para ver mais opções.</p>
+                </>
+              )}
               <button
                 onClick={limparFiltros}
                 className="text-sm font-semibold text-gold-dark hover:text-gold border border-gold/30 hover:border-gold px-5 py-2 rounded-full transition-all duration-200"

@@ -50,6 +50,11 @@ export default function ProductCard({ product, showCategory = false }: Props) {
         {product.installments && product.cashPrice && (
           <div className="mb-3 sm:mb-5 border-t border-gray-100 pt-2 sm:pt-4">
             <p className="font-semibold text-dark text-xs sm:text-base">{product.installments}</p>
+            {product.valorTotalParcelado && (
+              <p className="text-[9px] sm:text-[11px] text-text/45">
+                Total: R$ {product.valorTotalParcelado.toFixed(2).replace('.', ',')}
+              </p>
+            )}
             <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-text/55">{product.cashPrice}</p>
           </div>
         )}

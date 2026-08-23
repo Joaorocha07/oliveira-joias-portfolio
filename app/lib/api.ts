@@ -66,6 +66,8 @@ function formatBRL(value: number): string {
 
 function mapProduct(p: ApiProduto): Product {
   const valorParcela = p.valor_parcela ?? (p.parcelas ? p.valor / p.parcelas : null)
+  const totalParcelado = p.parcelas && valorParcela ? p.parcelas * valorParcela : null
+  const hasJuros = totalParcelado != null && totalParcelado > p.valor + 0.01
   return {
     id: p.id,
     slug: p.slug,
@@ -78,12 +80,27 @@ function mapProduct(p: ApiProduto): Product {
     width: p.largura ?? '',
     valor: p.valor,
     installments: p.parcelas && valorParcela
-      ? `${p.parcelas}x de ${formatBRL(valorParcela)} sem juros`
+      ? `${p.parcelas}x de ${formatBRL(valorParcela)}${hasJuros ? ' com juros' : ' sem juros'}`
       : undefined,
     cashPrice: p.valor > 0 ? `${formatBRL(p.valor)} à vista` : undefined,
+    valorTotalParcelado: hasJuros && totalParcelado ? totalParcelado : undefined,
     images: p.imagens,
     featured: p.destaque,
     ordem: p.ordem,
+  }
+}
+
+export type CatalogoCategoria = { id: string; nome: string; ativo: boolean }
+
+export async function fetchCategorias(): Promise<CatalogoCategoria[]> {
+  if (!BACKEND_URL) return []
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/categorias`, { next: { revalidate: 60 } })
+    if (!res.ok) return []
+    const { data } = (await res.json()) as { data: CatalogoCategoria[] }
+    return data ?? []
+  } catch {
+    return []
   }
 }
 

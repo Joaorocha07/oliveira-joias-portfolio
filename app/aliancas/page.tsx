@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getAllProducts, categoryPaths } from '@/app/lib/products'
+import { fetchCategorias } from '@/app/lib/api'
 import AliancasContent from './aliancas-content'
 
 export const metadata: Metadata = {
@@ -10,8 +11,9 @@ export const metadata: Metadata = {
 }
 
 export default async function AliancasPage() {
-  const all = await getAllProducts()
-  const products = all.filter((p) => categoryPaths[p.category] === 'aliancas')
+  const [all, categorias] = await Promise.all([getAllProducts(), fetchCategorias()])
+  const products = all.filter((p) => categoryPaths[p.category.toLowerCase()] === 'aliancas')
+  const nomesCategorias = categorias.map((c) => c.nome)
 
   return (
     <>
@@ -45,7 +47,7 @@ export default async function AliancasPage() {
         </div>
       </section>
 
-      <AliancasContent products={products} />
+      <AliancasContent products={products} categorias={nomesCategorias} />
     </>
   )
 }
