@@ -43,6 +43,12 @@ export default async function ProductPage({ params }: Props) {
   const related = await getRelatedProducts(product, 4)
   const whatsappUrl = buildWhatsAppUrl(product.name)
 
+  const effectiveConfig = {
+    info_produto: product.info_produto ?? config.info_produto,
+    voce_sabia: product.voce_sabia ?? config.voce_sabia,
+    faq: (product.faq && product.faq.length > 0) ? product.faq : config.faq,
+  }
+
   return (
     <>
       <div className="pt-20 lg:pt-24">
@@ -128,7 +134,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           <div className="max-w-3xl">
-            <ProductDetailsInfo width={product.width} config={config} />
+            <ProductDetailsInfo width={product.width} config={effectiveConfig} />
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { fetchAllProducts, fetchProductBySlug } from './api'
 
+export type FaqItem = { pergunta: string; resposta: string }
+
 export type Product = {
   id: string
   slug: string
@@ -17,6 +19,9 @@ export type Product = {
   videos?: string[]
   featured: boolean
   ordem: number | null
+  info_produto: string | null
+  voce_sabia: string | null
+  faq: FaqItem[] | null
 }
 
 export const categoryPaths: Record<string, string> = {

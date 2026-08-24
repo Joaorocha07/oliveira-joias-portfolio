@@ -58,6 +58,9 @@ type ApiProduto = {
   imagens: string[]
   destaque: boolean
   ordem: number | null
+  info_produto: string | null
+  voce_sabia: string | null
+  faq: Array<{ pergunta: string; resposta: string }> | null
 }
 
 function formatBRL(value: number): string {
@@ -86,6 +89,9 @@ function mapProduct(p: ApiProduto): Product {
     images: p.imagens,
     featured: p.destaque,
     ordem: p.ordem,
+    info_produto: p.info_produto ?? null,
+    voce_sabia: p.voce_sabia ?? null,
+    faq: p.faq ?? null,
   }
 }
 
