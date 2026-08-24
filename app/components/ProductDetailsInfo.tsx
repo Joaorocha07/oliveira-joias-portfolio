@@ -27,26 +27,6 @@ export default function ProductDetailsInfo({ width, config }: Props) {
         </div>
       )}
 
-      <div>
-        <h2 className="font-serif text-dark font-bold text-lg mb-3">Dados técnicos</h2>
-        <dl className="text-sm text-text/70 leading-relaxed space-y-1">
-          <div>
-            <dt className="inline font-semibold text-dark">Formato: </dt>
-            <dd className="inline">Anatômica</dd>
-          </div>
-          {width && (
-            <div>
-              <dt className="inline font-semibold text-dark">Largura: </dt>
-              <dd className="inline">{width}</dd>
-            </div>
-          )}
-          <div>
-            <dt className="inline font-semibold text-dark">Metal: </dt>
-            <dd className="inline">Aliança em prata legítima 950.</dd>
-          </div>
-        </dl>
-      </div>
-
       {config.voce_sabia && (
         <div className="bg-gold/5 rounded-2xl p-6">
           <h2 className="font-serif text-dark font-bold text-lg mb-2">Você sabia?</h2>
