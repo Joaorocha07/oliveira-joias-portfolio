@@ -1,4 +1,3 @@
-import Hero from './components/Hero'
 import BenefitsStrip from './components/BenefitsStrip'
 import MaterialsSection from './components/MaterialsSection'
 import FeaturedProducts from './components/FeaturedProducts'
@@ -13,9 +12,8 @@ import FinalCta from './components/FinalCta'
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <BenefitsStrip />
       <MaterialsSection />
+      <BenefitsStrip />
       <FeaturedProducts />
       <CustomizationSection />
       <PurchaseJourney />
