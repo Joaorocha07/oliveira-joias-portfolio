@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { useSearchParams } from 'next/navigation'
 import type { Product } from '@/app/lib/products'
 import { subcategoryAnchorId } from '@/app/lib/products'
 import ProductCard from '@/app/components/ProductCard'
@@ -70,8 +71,13 @@ function FilterSelect({
 }
 
 export default function AliancasContent({ products, categorias }: { products: Product[]; categorias: string[] }) {
+  const searchParams = useSearchParams()
   const [busca, setBusca] = useState('')
-  const [material, setMaterial] = useState('')
+  const [material, setMaterial] = useState(() => {
+    const param = searchParams.get('material') ?? ''
+    if (!param) return ''
+    return categorias.find((c) => c.toLowerCase() === param.toLowerCase()) ?? ''
+  })
   const [largura, setLargura] = useState('')
   const [acabamento, setAcabamento] = useState('')
   const [faixaPreco, setFaixaPreco] = useState('')

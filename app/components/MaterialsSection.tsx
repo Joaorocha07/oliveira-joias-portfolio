@@ -9,7 +9,7 @@ const materials = [
     from: 'A partir de R$ 280,00 o par',
     image: '/images/products/10.webp',
     alt: 'Alianças de prata 950 — Oliveira Joias',
-    href: '/aliancas',
+    href: '/aliancas?material=prata+950',
   },
   {
     slug: 'moeda',
@@ -18,7 +18,7 @@ const materials = [
     from: 'A partir de R$ 249,90 o par',
     image: '/images/coin.webp',
     alt: 'Alianças de moeda antiga — Oliveira Joias',
-    href: '/aliancas',
+    href: '/aliancas?material=moeda+antiga',
   },
   {
     slug: 'ouro',
@@ -27,7 +27,7 @@ const materials = [
     from: 'Orçamentos personalizados',
     image: '/images/gold2.webp',
     alt: 'Alianças de ouro 18k — Oliveira Joias',
-    href: '/aliancas',
+    href: '/aliancas?material=ouro',
   },
 ]
 

@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getAllProducts, categoryPaths } from '@/app/lib/products'
@@ -47,7 +48,9 @@ export default async function AliancasPage() {
         </div>
       </section>
 
-      <AliancasContent products={products} categorias={nomesCategorias} />
+      <Suspense>
+        <AliancasContent products={products} categorias={nomesCategorias} />
+      </Suspense>
     </>
   )
 }
