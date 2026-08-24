@@ -74,9 +74,14 @@ export default function AliancasContent({ products, categorias }: { products: Pr
   const searchParams = useSearchParams()
   const [busca, setBusca] = useState('')
   const [material, setMaterial] = useState(() => {
-    const param = searchParams.get('material') ?? ''
+    const param = (searchParams.get('material') ?? '').toLowerCase().trim()
     if (!param) return ''
-    return categorias.find((c) => c.toLowerCase() === param.toLowerCase()) ?? ''
+    return (
+      categorias.find((c) => {
+        const cLow = c.toLowerCase()
+        return cLow === param || cLow.startsWith(param) || param.startsWith(cLow)
+      }) ?? ''
+    )
   })
   const [largura, setLargura] = useState('')
   const [acabamento, setAcabamento] = useState('')
