@@ -1,8 +1,8 @@
 import Image from 'next/image'
+import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
 
-const WA_URL = 'https://wa.me/5534998717389?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20Oliveira%20Joias.'
-
-export default function AboutSection() {
+export default function AboutSection({ site }: { site: SiteConfig }) {
+  const WA_URL = whatsappUrl(site, `Olá! Gostaria de falar com a ${site.name}.`)
   return (
     <section id="sobre" className="bg-[#17120d] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -10,7 +10,7 @@ export default function AboutSection() {
           <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[520px]">
             <Image
               src="/images/gold.webp"
-              alt="Joias Oliveira — caixa de veludo com alianças"
+              alt={`${site.name} — caixa de veludo com alianças`}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -50,7 +50,7 @@ export default function AboutSection() {
               className="inline-flex items-center gap-2.5 bg-whatsapp hover:bg-whatsapp-dark text-white font-bold px-6 py-3.5 rounded-lg transition-colors duration-200 text-sm"
             >
               <WhatsAppIcon />
-              Falar com a Oliveira Joias
+              Falar com a {site.name}
             </a>
           </div>
         </div>

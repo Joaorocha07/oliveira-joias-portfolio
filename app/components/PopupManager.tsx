@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import type { SiteConfig } from '@/app/lib/site'
 
 type SitePopup = {
   id: string
@@ -39,7 +40,7 @@ function markSeenToday(id: string) {
   try { localStorage.setItem(dayKey(id), todayStr()) } catch { /* noop */ }
 }
 
-export default function PopupManager() {
+export default function PopupManager({ site }: { site: SiteConfig }) {
   const pathname = usePathname()
   const [popups, setPopups] = useState<SitePopup[]>([])
   const [activePopup, setActivePopup] = useState<SitePopup | null>(null)
@@ -165,7 +166,7 @@ export default function PopupManager() {
               <polygon points="20,4 36,16 4,16" stroke="#c8a15a" strokeWidth="0.8" fill="#c8a15a" fillOpacity="0.12" />
               <polygon points="20,9 30,16 20,31 10,16" fill="#c8a15a" fillOpacity="0.08" />
             </svg>
-            <p className="text-[10px] tracking-[3px] uppercase text-gold/75 font-medium">Oliveira Joias</p>
+            <p className="text-[10px] tracking-[3px] uppercase text-gold/75 font-medium">{site.name}</p>
           </div>
         )}
 

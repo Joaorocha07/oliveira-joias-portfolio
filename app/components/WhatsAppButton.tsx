@@ -1,11 +1,11 @@
 'use client'
+import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
 
-import { WHATSAPP_GENERIC_URL } from '@/app/lib/products'
 
-export default function WhatsAppButton() {
+export default function WhatsAppButton({ site }: { site: SiteConfig }) {
   return (
     <a
-      href={WHATSAPP_GENERIC_URL}
+      href={whatsappUrl(site, `Olá! Gostaria de saber mais sobre os produtos da ${site.name}.`)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"

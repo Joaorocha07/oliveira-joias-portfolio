@@ -1,6 +1,7 @@
-const WA_URL = 'https://wa.me/5534998717389?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Oliveira%20Joias%20e%20gostaria%20de%20receber%20atendimento.'
+import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
 
-export default function FinalCta() {
+export default function FinalCta({ site }: { site: SiteConfig }) {
+  const WA_URL = whatsappUrl(site, `Olá! Vim pelo site da ${site.name} e gostaria de receber atendimento.`)
   return (
     <section
       className="py-20 lg:py-28 text-white text-center"

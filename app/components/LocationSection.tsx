@@ -1,3 +1,5 @@
+import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
+
 const schedule = [
   { day: 'Segunda-feira', hours: '09:00 – 19:00' },
   { day: 'Terça-feira', hours: '09:00 – 19:00' },
@@ -18,7 +20,7 @@ function getTodayStatus() {
   return { open: hour >= 9 && hour < 19, label: hour >= 9 && hour < 19 ? 'Aberto agora' : 'Fechado agora' }
 }
 
-export default function LocationSection() {
+export default function LocationSection({ site }: { site: SiteConfig }) {
   const status = getTodayStatus()
 
   return (
@@ -43,7 +45,7 @@ export default function LocationSection() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localização da Oliveira Joias no Google Maps"
+              title={`Localização da ${site.name} no Google Maps`}
             />
           </div>
 
@@ -111,7 +113,7 @@ export default function LocationSection() {
             </div>
 
             <a
-              href="https://wa.me/5534998717389?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Oliveira%20Joias."
+              href={whatsappUrl(site, `Olá! Gostaria de saber mais sobre os produtos da ${site.name}.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold py-4 px-6 rounded-2xl transition-colors duration-200"

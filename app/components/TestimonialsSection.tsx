@@ -1,4 +1,5 @@
 import { GOOGLE_PLACE_RATING, GOOGLE_PLACE_REVIEW_COUNT, GOOGLE_MAPS_URL, GOOGLE_WRITE_REVIEW_URL } from '@/app/lib/google'
+import type { SiteConfig } from '@/app/lib/site'
 
 const testimonials = [
   {
@@ -22,7 +23,7 @@ const testimonials = [
   {
     name: 'Juliana e Marcos',
     date: 'há 2 meses',
-    text: 'Procurávamos alianças de moeda antiga há muito tempo. A Oliveira Joias foi a única que nos atendeu com tanta atenção e o resultado foi perfeito.',
+    text: 'Procurávamos alianças de moeda antiga há muito tempo. A {marca} foi a única que nos atendeu com tanta atenção e o resultado foi perfeito.',
     stars: 5,
   },
   {
@@ -39,7 +40,7 @@ const testimonials = [
   },
 ]
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ site }: { site: SiteConfig }) {
   return (
     <section className="py-20 lg:py-28 bg-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,7 +86,7 @@ export default function TestimonialsSection() {
                   <StarFilledIcon key={i} />
                 ))}
               </div>
-              <p className="text-white/75 text-sm leading-relaxed flex-1">"{t.text}"</p>
+              <p className="text-white/75 text-sm leading-relaxed flex-1">"{t.text.replace('{marca}', site.name)}"</p>
               <div className="flex items-center justify-between pt-2 border-t border-white/10">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold text-xs font-bold">

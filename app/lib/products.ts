@@ -1,4 +1,5 @@
 import { fetchAllProducts, fetchProductBySlug } from './api'
+import { type SiteConfig, whatsappUrl } from './site'
 
 export type FaqItem = { pergunta: string; resposta: string }
 
@@ -34,14 +35,9 @@ export const categoryPaths: Record<string, string> = {
   'prata': 'aliancas',
 }
 
-const WHATSAPP_NUMBER = '5534998717389'
-
-export function buildWhatsAppUrl(productName: string) {
-  const text = `Olá! Vi no site da Oliveira Joias o produto ${productName} e tenho interesse. Poderia me passar mais informações?`
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
+export function buildWhatsAppUrl(site: SiteConfig, productName: string) {
+  return whatsappUrl(site, `Olá! Vi no site da ${site.name} o produto ${productName} e tenho interesse. Poderia me passar mais informações?`)
 }
-
-export const WHATSAPP_GENERIC_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre os produtos da Oliveira Joias.')}`
 
 export async function getAllProducts(): Promise<Product[]> {
   return fetchAllProducts()

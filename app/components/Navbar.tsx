@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
 
 const navLinks = [
   { href: '/', label: 'Início' },
@@ -12,9 +13,8 @@ const navLinks = [
   { href: '/#localizacao', label: 'Contato' },
 ]
 
-const WA_URL = 'https://wa.me/5534998717389?text=Ol%C3%A1!%20Gostaria%20de%20receber%20atendimento%20para%20escolher%20minhas%20alian%C3%A7as.'
-
-export default function Navbar() {
+export default function Navbar({ site }: { site: SiteConfig }) {
+  const WA_URL = whatsappUrl(site, `Olá! Gostaria de receber atendimento para escolher minhas alianças.`)
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -49,10 +49,10 @@ export default function Navbar() {
               <span className="w-8 h-8 border border-gold rounded-full grid place-items-center text-gold text-base font-serif">◊</span>
               <span className="flex flex-col leading-none">
                 <span className="font-serif text-xl font-semibold text-white tracking-[0.15em]">
-                  OLIVEIRA
+                  {site.logoTop}
                 </span>
                 <span className="text-[8px] text-gold tracking-[0.42em] uppercase -mt-0.5">
-                  JOIAS
+                  {site.logoBottom}
                 </span>
               </span>
             </Link>

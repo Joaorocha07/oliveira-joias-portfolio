@@ -3,15 +3,23 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getAllProducts, categoryPaths } from '@/app/lib/products'
 import { fetchCategorias } from '@/app/lib/api'
+import { getSite } from '@/app/lib/site'
 import AliancasContent from './aliancas-content'
 
-export const metadata: Metadata = {
-  title: 'Alianças',
-  description:
-    'Coleção completa de alianças da Oliveira Joias. Aurora, Classic, Lumina, Essenza e muito mais. Alianças em prata com qualidade e tradição.',
+type Props = {
+  params: Promise<{ site: string }>
 }
 
-export default async function AliancasPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const site = getSite((await params).site)
+  return {
+    title: 'Alianças',
+    description: `Coleção completa de alianças da ${site.name}. Aurora, Classic, Lumina, Essenza e muito mais. Alianças em prata com qualidade e tradição.`,
+  }
+}
+
+export default async function AliancasPage({ params }: Props) {
+  const site = getSite((await params).site)
   const [all, categorias] = await Promise.all([getAllProducts(), fetchCategorias()])
   const products = all.filter((p) => categoryPaths[p.category.toLowerCase()] === 'aliancas')
   const nomesCategorias = categorias.map((c) => c.nome)
@@ -27,7 +35,7 @@ export default async function AliancasPage() {
         <div className="absolute inset-0 opacity-40">
           <Image
             src="/images/capa-desktop-aliancas.png"
-            alt="Coleção de Alianças Oliveira Joias"
+            alt={`Coleção de Alianças ${site.name}`}
             fill
             className="object-cover object-center"
             priority

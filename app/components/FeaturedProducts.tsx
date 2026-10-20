@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { getFeaturedProducts } from '@/app/lib/products'
+import type { SiteConfig } from '@/app/lib/site'
 
-export default async function FeaturedProducts() {
+export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
   const featured = await getFeaturedProducts()
 
   if (featured.length === 0) return null
@@ -32,7 +33,7 @@ export default async function FeaturedProducts() {
                 {p.images[0] ? (
                   <Image
                     src={p.images[0]}
-                    alt={`${p.name} — Oliveira Joias`}
+                    alt={`${p.name} — ${site.name}`}
                     width={400}
                     height={400}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"

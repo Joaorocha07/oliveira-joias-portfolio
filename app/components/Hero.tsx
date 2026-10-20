@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
 
-const WA_URL = 'https://wa.me/5534998717389?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Oliveira%20Joias%20e%20gostaria%20de%20receber%20atendimento%20para%20escolher%20minhas%20alian%C3%A7as.'
-
-export default function Hero() {
+export default function Hero({ site }: { site: SiteConfig }) {
+  const WA_URL = whatsappUrl(site, `Olá! Vim pelo site da ${site.name} e gostaria de receber atendimento para escolher minhas alianças.`)
   return (
     <section
       id="inicio"
@@ -57,7 +57,7 @@ export default function Hero() {
             <div className="relative w-full max-w-[480px]">
               <Image
                 src="/images/gold.webp"
-                alt="Alianças douradas em caixa de veludo — Oliveira Joias"
+                alt={`Alianças douradas em caixa de veludo — ${site.name}`}
                 width={480}
                 height={500}
                 className="w-full h-[500px] object-cover rounded-2xl opacity-90 shadow-[0_30px_80px_#000]"

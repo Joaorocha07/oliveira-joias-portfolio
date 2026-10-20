@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { SiteConfig } from '@/app/lib/site'
 
 const materials = [
   {
@@ -8,7 +9,7 @@ const materials = [
     name: 'Prata 950',
     from: 'A partir de R$ 199,90 o par',
     image: '/images/products/10.webp',
-    alt: 'Alianças de prata 950 — Oliveira Joias',
+    alt: 'Alianças de prata 950',
     href: '/aliancas?material=prata',
   },
   {
@@ -17,7 +18,7 @@ const materials = [
     name: 'Moeda Antiga',
     from: 'A partir de R$ 239,90 o par',
     image: '/images/teste.jpeg',
-    alt: 'Alianças de moeda antiga — Oliveira Joias',
+    alt: 'Alianças de moeda antiga',
     href: '/aliancas?material=moeda',
   },
   {
@@ -26,12 +27,12 @@ const materials = [
     name: 'Ouro 18K',
     from: 'A partir de 12x de R$ 210,00',
     image: '/images/ouro.jpeg',
-    alt: 'Alianças de ouro 18k — Oliveira Joias',
+    alt: 'Alianças de ouro 18k',
     href: '/aliancas?material=ouro',
   },
 ]
 
-export default function MaterialsSection() {
+export default function MaterialsSection({ site }: { site: SiteConfig }) {
   return (
     <section
       id="materiais"
@@ -65,7 +66,7 @@ export default function MaterialsSection() {
             >
               <Image
                 src={m.image}
-                alt={m.alt}
+                alt={`${m.alt} — ${site.name}`}
                 fill
                 priority
                 className={

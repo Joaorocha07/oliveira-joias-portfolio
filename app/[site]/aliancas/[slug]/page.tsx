@@ -8,12 +8,13 @@ import {
   buildWhatsAppUrl,
 } from '@/app/lib/products'
 import { fetchCatalogoConfig } from '@/app/lib/api'
+import { getSite } from '@/app/lib/site'
 import ImageGallery from '@/app/components/ImageGallery'
 import ProductCard from '@/app/components/ProductCard'
 import ProductDetailsInfo from '@/app/components/ProductDetailsInfo'
 
 type Props = {
-  params: Promise<{ slug: string }>
+  params: Promise<{ site: string; slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -32,7 +33,8 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { slug } = await params
+  const { site: siteKey, slug } = await params
+  const site = getSite(siteKey)
   const [product, config] = await Promise.all([
     getProductBySlug(slug),
     fetchCatalogoConfig(),
@@ -41,7 +43,7 @@ export default async function ProductPage({ params }: Props) {
   if (!product) notFound()
 
   const related = await getRelatedProducts(product, 4)
-  const whatsappUrl = buildWhatsAppUrl(product.name)
+  const whatsappUrl = buildWhatsAppUrl(site, product.name)
 
   const effectiveConfig = {
     info_produto: product.info_produto ?? config.info_produto,

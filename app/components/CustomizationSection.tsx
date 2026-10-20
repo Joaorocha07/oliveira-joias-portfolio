@@ -1,4 +1,4 @@
-const WA_URL = 'https://wa.me/5534998717389?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20as%20op%C3%A7%C3%B5es%20de%20personaliza%C3%A7%C3%A3o%20das%20alian%C3%A7as.'
+import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
 
 const options = [
   { icon: '▤', title: 'Largura', desc: '2mm a 10mm, conforme modelo' },
@@ -9,7 +9,8 @@ const options = [
   { icon: '◔', title: 'Numeração', desc: 'Ajuste conforme o dedo do casal' },
 ]
 
-export default function CustomizationSection() {
+export default function CustomizationSection({ site }: { site: SiteConfig }) {
+  const WA_URL = whatsappUrl(site, `Olá! Gostaria de saber mais sobre as opções de personalização das alianças.`)
   return (
     <section id="personalizacao" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
