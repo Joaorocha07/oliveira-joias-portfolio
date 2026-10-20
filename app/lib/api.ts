@@ -2,6 +2,11 @@ import type { Product } from './products'
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? ''
 
+// Cada regeneração de página grava ~10 arquivos no cache ISR da Vercel (HTML,
+// RSC e segmentos) por página e por domínio. Com 60s isso estourava a cota de
+// ISR Writes do plano Hobby; 1h mantém o catálogo atualizado com folga.
+const REVALIDATE_SECONDS = 3600
+
 export type CatalogoConfig = {
   info_produto: string
   voce_sabia: string
@@ -34,7 +39,7 @@ const DEFAULT_CONFIG: CatalogoConfig = {
 export async function fetchCatalogoConfig(): Promise<CatalogoConfig> {
   if (!BACKEND_URL) return DEFAULT_CONFIG
   try {
-    const res = await fetch(`${BACKEND_URL}/api/config`, { next: { revalidate: 300 } })
+    const res = await fetch(`${BACKEND_URL}/api/config`, { next: { revalidate: REVALIDATE_SECONDS } })
     if (!res.ok) return DEFAULT_CONFIG
     const { data } = (await res.json()) as { data: CatalogoConfig }
     return data ?? DEFAULT_CONFIG
@@ -100,7 +105,7 @@ export type CatalogoCategoria = { id: string; nome: string; ativo: boolean }
 export async function fetchCategorias(): Promise<CatalogoCategoria[]> {
   if (!BACKEND_URL) return []
   try {
-    const res = await fetch(`${BACKEND_URL}/api/categorias`, { next: { revalidate: 60 } })
+    const res = await fetch(`${BACKEND_URL}/api/categorias`, { next: { revalidate: REVALIDATE_SECONDS } })
     if (!res.ok) return []
     const { data } = (await res.json()) as { data: CatalogoCategoria[] }
     return data ?? []
@@ -109,12 +114,10 @@ export async function fetchCategorias(): Promise<CatalogoCategoria[]> {
   }
 }
 
-// revalidate: 60 — catálogo não muda a cada segundo, ISR de 1 minuto evita
-// bater no backend a cada request mantendo os produtos razoavelmente atuais.
 export async function fetchAllProducts(): Promise<Product[]> {
   if (!BACKEND_URL) return []
   try {
-    const res = await fetch(`${BACKEND_URL}/api/produtos`, { next: { revalidate: 60 } })
+    const res = await fetch(`${BACKEND_URL}/api/produtos`, { next: { revalidate: REVALIDATE_SECONDS } })
     if (!res.ok) return []
     const { data } = (await res.json()) as { data: ApiProduto[] }
     return data.map(mapProduct)
@@ -126,7 +129,7 @@ export async function fetchAllProducts(): Promise<Product[]> {
 export async function fetchProductBySlug(slug: string): Promise<Product | undefined> {
   if (!BACKEND_URL) return undefined
   try {
-    const res = await fetch(`${BACKEND_URL}/api/produtos/${slug}`, { next: { revalidate: 60 } })
+    const res = await fetch(`${BACKEND_URL}/api/produtos/${slug}`, { next: { revalidate: REVALIDATE_SECONDS } })
     if (!res.ok) return undefined
     const { data } = (await res.json()) as { data: ApiProduto }
     return mapProduct(data)

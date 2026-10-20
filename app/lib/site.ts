@@ -21,8 +21,8 @@ export const sites: Record<SiteKey, SiteConfig> = {
     domain: 'www.oliveirajoias.com',
     logoTop: 'OLIVEIRA',
     logoBottom: 'JOIAS',
-    whatsappNumber: '5534998717389',
-    whatsappDisplay: '(34) 99871-7389',
+    whatsappNumber: '553497717779',
+    whatsappDisplay: '(34) 9771-7779',
   },
   'aliancas-oliveira': {
     key: 'aliancas-oliveira',
@@ -30,8 +30,8 @@ export const sites: Record<SiteKey, SiteConfig> = {
     domain: 'www.aliancasoliveira.com',
     logoTop: 'ALIANÇAS',
     logoBottom: 'OLIVEIRA',
-    whatsappNumber: '553497717779',
-    whatsappDisplay: '(34) 9771-7779',
+    whatsappNumber: '5534998717389',
+    whatsappDisplay: '(34) 99871-7389',
   },
 }
 
