@@ -1,14 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { categoryPaths, type Product } from '@/app/lib/products'
+import OutOfStockRibbon from './OutOfStockRibbon'
 
 type Props = {
   product: Product
   showCategory?: boolean
+  /** Se o domínio atual exibe a faixa "Sem estoque" (SiteConfig.showOutOfStock). */
+  showOutOfStock?: boolean
 }
 
-export default function ProductCard({ product, showCategory = false }: Props) {
+export default function ProductCard({ product, showCategory = false, showOutOfStock = false }: Props) {
   const href = `/${categoryPaths[product.category] ?? 'aliancas'}/${product.slug}`
+  const semEstoque = showOutOfStock && product.outOfStock
 
   return (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
@@ -27,6 +31,7 @@ export default function ProductCard({ product, showCategory = false }: Props) {
             Foto em breve
           </div>
         )}
+        {semEstoque && <OutOfStockRibbon />}
         {showCategory && (
           <div className="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-gold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-medium">
             {product.category}

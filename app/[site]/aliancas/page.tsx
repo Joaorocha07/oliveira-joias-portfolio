@@ -57,7 +57,7 @@ export default async function AliancasPage({ params }: Props) {
       </section>
 
       <Suspense>
-        <AliancasContent products={products} categorias={nomesCategorias} />
+        <AliancasContent products={products} categorias={nomesCategorias} showOutOfStock={site.showOutOfStock} />
       </Suspense>
     </>
   )

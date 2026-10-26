@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import OutOfStockRibbon from './OutOfStockRibbon'
 
 type Media = { type: 'image' | 'video'; src: string }
 
@@ -9,9 +10,10 @@ type Props = {
   images: string[]
   videos?: string[]
   productName: string
+  outOfStock?: boolean
 }
 
-export default function ImageGallery({ images, videos = [], productName }: Props) {
+export default function ImageGallery({ images, videos = [], productName, outOfStock = false }: Props) {
   const [selected, setSelected] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
@@ -57,6 +59,7 @@ export default function ImageGallery({ images, videos = [], productName }: Props
     return (
       <div className="flex flex-col gap-4">
         <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 shadow-md flex flex-col items-center justify-center gap-3 text-text/30">
+          {outOfStock && <OutOfStockRibbon size="lg" />}
           <ImageOffIcon />
           <span className="text-sm font-medium">Fotos em breve</span>
         </div>
@@ -67,6 +70,7 @@ export default function ImageGallery({ images, videos = [], productName }: Props
   return (
     <div className="flex flex-col gap-4">
       <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 shadow-md group">
+        {outOfStock && current.type === 'image' && <OutOfStockRibbon size="lg" />}
         {current.type === 'video' ? (
           <video
             key={current.src}

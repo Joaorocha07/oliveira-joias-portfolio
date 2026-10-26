@@ -19,6 +19,7 @@ export type Product = {
   images: string[]
   videos?: string[]
   featured: boolean
+  outOfStock: boolean
   ordem: number | null
   info_produto: string | null
   voce_sabia: string | null

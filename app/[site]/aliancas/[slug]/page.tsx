@@ -44,6 +44,7 @@ export default async function ProductPage({ params }: Props) {
 
   const related = await getRelatedProducts(product, 4)
   const whatsappUrl = buildWhatsAppUrl(site, product.name)
+  const semEstoque = site.showOutOfStock && product.outOfStock
 
   const effectiveConfig = {
     info_produto: product.info_produto ?? config.info_produto,
@@ -64,7 +65,7 @@ export default async function ProductPage({ params }: Props) {
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            <ImageGallery images={product.images} videos={product.videos} productName={product.name} />
+            <ImageGallery images={product.images} videos={product.videos} productName={product.name} outOfStock={semEstoque} />
 
             <div className="flex flex-col">
               <p className="text-gold text-xs uppercase tracking-widest font-medium mb-2">
@@ -86,6 +87,15 @@ export default async function ProductPage({ params }: Props) {
               <p className="text-text/70 leading-relaxed mb-8 text-base">
                 {product.details}
               </p>
+
+              {semEstoque && (
+                <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 px-5 py-4">
+                  <p className="text-sm font-bold uppercase tracking-widest text-red-600">Sem estoque no momento</p>
+                  <p className="mt-1 text-sm text-red-700/80">
+                    Chame no WhatsApp para saber a previsão de reposição ou encomendar.
+                  </p>
+                </div>
+              )}
 
               {product.installments && product.cashPrice && (
                 <div className="mb-8 rounded-2xl border border-gold/20 bg-gold/5 p-5">
@@ -149,7 +159,7 @@ export default async function ProductPage({ params }: Props) {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {related.map((p) => (
-                <ProductCard key={p.id} product={p} />
+                <ProductCard key={p.id} product={p} showOutOfStock={site.showOutOfStock} />
               ))}
             </div>
           </div>

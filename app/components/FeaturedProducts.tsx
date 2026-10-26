@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getFeaturedProducts } from '@/app/lib/products'
 import type { SiteConfig } from '@/app/lib/site'
+import OutOfStockRibbon from './OutOfStockRibbon'
 
 export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
   const featured = await getFeaturedProducts()
@@ -29,7 +30,8 @@ export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
               key={p.id}
               className="bg-white border border-gray-100 rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
-              <Link href={`/aliancas/${p.slug}`} className="block aspect-square overflow-hidden bg-gray-50">
+              <Link href={`/aliancas/${p.slug}`} className="relative block aspect-square overflow-hidden bg-gray-50">
+                {site.showOutOfStock && p.outOfStock && <OutOfStockRibbon />}
                 {p.images[0] ? (
                   <Image
                     src={p.images[0]}

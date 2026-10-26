@@ -62,6 +62,8 @@ type ApiProduto = {
   valor_parcela: number | null
   imagens: string[]
   destaque: boolean
+  // Opcional: o backend só passa a enviar após a migration 012.
+  sem_estoque?: boolean
   ordem: number | null
   info_produto: string | null
   voce_sabia: string | null
@@ -93,6 +95,7 @@ function mapProduct(p: ApiProduto): Product {
     cashPrice: p.valor > 0 ? `${formatBRL(p.valor)} à vista` : undefined,
     images: p.imagens,
     featured: p.destaque,
+    outOfStock: p.sem_estoque ?? false,
     ordem: p.ordem,
     info_produto: p.info_produto ?? null,
     voce_sabia: p.voce_sabia ?? null,

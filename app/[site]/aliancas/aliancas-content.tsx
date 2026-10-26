@@ -70,7 +70,7 @@ function FilterSelect({
   )
 }
 
-export default function AliancasContent({ products, categorias }: { products: Product[]; categorias: string[] }) {
+export default function AliancasContent({ products, categorias, showOutOfStock }: { products: Product[]; categorias: string[]; showOutOfStock: boolean }) {
   const searchParams = useSearchParams()
   const [busca, setBusca] = useState('')
   const [material, setMaterial] = useState(() => {
@@ -233,7 +233,7 @@ export default function AliancasContent({ products, categorias }: { products: Pr
               )}
               <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
                 {group.products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard key={product.id} product={product} showOutOfStock={showOutOfStock} />
                 ))}
               </div>
             </div>
