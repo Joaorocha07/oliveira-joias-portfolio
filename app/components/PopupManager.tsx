@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { SiteConfig } from '@/app/lib/site'
 import LeadSignupForm from './LeadSignupForm'
+import { useSessao } from '@/app/lib/sessao'
 
 type SitePopup = {
   id: string
@@ -94,7 +95,9 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
 
   const cadastroPopup = popups.find((p) => p.tipo === 'cadastro') ?? null
   // Enquanto o visitante pode receber o pop-up de cadastro, ele substitui o de boas-vindas.
-  const cadastroElegivel = !!cadastroPopup && !leadPopupBlocked()
+  // Quem já está logado (tem conta) não vê o pop-up de cadastro.
+  const logado = useSessao()
+  const cadastroElegivel = !!cadastroPopup && logado === false && !leadPopupBlocked()
 
   const showPopup = useCallback((popup: SitePopup) => {
     if (wasSeenToday(popup.id)) return
