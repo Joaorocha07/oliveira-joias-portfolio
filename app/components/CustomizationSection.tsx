@@ -12,13 +12,13 @@ const options = [
 export default function CustomizationSection({ site }: { site: SiteConfig }) {
   const WA_URL = whatsappUrl(site, `Olá! Gostaria de saber mais sobre as opções de personalização das alianças.`)
   return (
-    <section id="personalizacao" className="py-20 lg:py-28 bg-white">
+    <section id="personalizacao" className="py-20 lg:py-28 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <p className="text-[11px] text-gold tracking-[0.2em] uppercase font-medium mb-3">
             Do seu jeito
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] leading-[1.05] font-medium text-dark">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] leading-[1.05] font-medium text-ink">
             Personalize sua aliança
           </h2>
           <p className="text-text/60 mt-4 text-base max-w-lg mx-auto">
@@ -30,7 +30,7 @@ export default function CustomizationSection({ site }: { site: SiteConfig }) {
           {options.map((o) => (
             <div key={o.title} className="flex flex-col items-center text-center p-4 rounded-xl bg-cream border border-gray-100">
               <span className="text-gold text-2xl mb-3">{o.icon}</span>
-              <p className="text-dark font-semibold text-sm mb-1">{o.title}</p>
+              <p className="text-ink font-semibold text-sm mb-1">{o.title}</p>
               <p className="text-text/50 text-xs leading-snug">{o.desc}</p>
             </div>
           ))}

@@ -9,17 +9,17 @@ const questions = [
 
 export default function FaqSection() {
   return (
-    <section id="duvidas" className="scroll-mt-20 bg-white py-20 lg:py-28">
+    <section id="duvidas" className="scroll-mt-20 bg-surface py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-gold">Perguntas frequentes</p>
-          <h2 className="font-serif text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">Ainda com dúvidas?</h2>
+          <h2 className="font-serif text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">Ainda com dúvidas?</h2>
           <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-text/65">Reunimos as respostas que mais ajudam na hora de escolher suas alianças.</p>
         </div>
-        <div className="divide-y divide-dark/10 border-y border-dark/10">
+        <div className="divide-y divide-ink/10 border-y border-ink/10">
           {questions.map((item) => (
             <details key={item.question} className="group py-1">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-semibold text-dark marker:content-none">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-semibold text-ink marker:content-none">
                 {item.question}
                 <span aria-hidden="true" className="shrink-0 text-2xl font-light text-gold transition-transform duration-200 group-open:rotate-45">+</span>
               </summary>

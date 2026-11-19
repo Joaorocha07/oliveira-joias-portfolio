@@ -30,7 +30,7 @@ export default function LocationSection({ site }: { site: SiteConfig }) {
           <p className="text-gold text-sm tracking-widest uppercase font-medium mb-3">
             Onde estamos
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-dark">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink">
             Visite nossa loja
           </h2>
         </div>
@@ -50,13 +50,13 @@ export default function LocationSection({ site }: { site: SiteConfig }) {
           </div>
 
           <div className="flex flex-col gap-8">
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className="bg-surface rounded-2xl p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center text-gold">
                   <MapPinIcon />
                 </div>
                 <div>
-                  <h3 className="font-serif text-dark font-bold text-lg">Endereço</h3>
+                  <h3 className="font-serif text-ink font-bold text-lg">Endereço</h3>
                 </div>
               </div>
               <p className="text-text/70 text-sm leading-relaxed">
@@ -77,13 +77,13 @@ export default function LocationSection({ site }: { site: SiteConfig }) {
               </a>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className="bg-surface rounded-2xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center text-gold">
                     <ClockIcon />
                   </div>
-                  <h3 className="font-serif text-dark font-bold text-lg">Horário de Funcionamento</h3>
+                  <h3 className="font-serif text-ink font-bold text-lg">Horário de Funcionamento</h3>
                 </div>
                 <span
                   className={`text-xs font-bold px-3 py-1 rounded-full ${
@@ -102,7 +102,7 @@ export default function LocationSection({ site }: { site: SiteConfig }) {
                     return (
                       <tr key={s.day} className="border-b border-gray-50 last:border-0">
                         <td className="py-2 text-text/70">{s.day}</td>
-                        <td className={`py-2 text-right font-medium ${isClosed ? 'text-red-400' : 'text-dark'}`}>
+                        <td className={`py-2 text-right font-medium ${isClosed ? 'text-red-400' : 'text-ink'}`}>
                           {s.hours}
                         </td>
                       </tr>

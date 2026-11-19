@@ -71,7 +71,7 @@ export default async function ProductPage({ params }: Props) {
               <p className="text-gold text-xs uppercase tracking-widest font-medium mb-2">
                 {product.subcategory}
               </p>
-              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-dark leading-tight mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-ink leading-tight mb-4">
                 {product.name}
               </h1>
 
@@ -89,9 +89,9 @@ export default async function ProductPage({ params }: Props) {
               </p>
 
               {semEstoque && (
-                <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 px-5 py-4">
-                  <p className="text-sm font-bold uppercase tracking-widest text-red-600">Sem estoque no momento</p>
-                  <p className="mt-1 text-sm text-red-700/80">
+                <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 dark:border-red-500/30 dark:bg-red-500/10 px-5 py-4">
+                  <p className="text-sm font-bold uppercase tracking-widest text-red-600 dark:text-red-400">Sem estoque no momento</p>
+                  <p className="mt-1 text-sm text-red-700/80 dark:text-red-300/80">
                     Chame no WhatsApp para saber a previsão de reposição ou encomendar.
                   </p>
                 </div>
@@ -100,29 +100,29 @@ export default async function ProductPage({ params }: Props) {
               {product.installments && product.cashPrice && (
                 <div className="mb-8 rounded-2xl border border-gold/20 bg-gold/5 p-5">
                   <p className="text-xs font-medium uppercase tracking-widest text-gold-dark">Valor do par</p>
-                  <p className="mt-2 font-serif text-2xl font-bold text-dark">{product.installments}</p>
+                  <p className="mt-2 font-serif text-2xl font-bold text-ink">{product.installments}</p>
                   <p className="mt-1 text-sm text-text/60">{product.cashPrice}</p>
                 </div>
               )}
 
               <div className="border-t border-gray-100 pt-8 mb-8">
-                <h2 className="font-serif text-dark font-bold text-lg mb-4">Especificações</h2>
+                <h2 className="font-serif text-ink font-bold text-lg mb-4">Especificações</h2>
                 <dl className="grid grid-cols-2 gap-3">
                   <div>
                     <dt className="text-xs text-text/40 uppercase tracking-wide">Material</dt>
-                    <dd className="text-sm font-medium text-dark mt-0.5">{product.material}</dd>
+                    <dd className="text-sm font-medium text-ink mt-0.5">{product.material}</dd>
                   </div>
                   <div>
                     <dt className="text-xs text-text/40 uppercase tracking-wide">Largura</dt>
-                    <dd className="text-sm font-medium text-dark mt-0.5">{product.width}</dd>
+                    <dd className="text-sm font-medium text-ink mt-0.5">{product.width}</dd>
                   </div>
                   <div>
                     <dt className="text-xs text-text/40 uppercase tracking-wide">Categoria</dt>
-                    <dd className="text-sm font-medium text-dark mt-0.5 capitalize">{product.category}</dd>
+                    <dd className="text-sm font-medium text-ink mt-0.5 capitalize">{product.category}</dd>
                   </div>
                   <div>
                     <dt className="text-xs text-text/40 uppercase tracking-wide">Linha</dt>
-                    <dd className="text-sm font-medium text-dark mt-0.5">{product.subcategory}</dd>
+                    <dd className="text-sm font-medium text-ink mt-0.5">{product.subcategory}</dd>
                   </div>
                 </dl>
               </div>
@@ -154,7 +154,7 @@ export default async function ProductPage({ params }: Props) {
       {related.length > 0 && (
         <section className="py-16 bg-cream mt-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-dark mb-8">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink mb-8">
               Produtos Relacionados
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

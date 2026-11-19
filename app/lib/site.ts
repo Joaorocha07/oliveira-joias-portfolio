@@ -15,6 +15,8 @@ export type SiteConfig = {
   // Exibe a faixa "Sem estoque" nos produtos marcados assim no ERP (/portfolio).
   // Só o oliveirajoias.com mostra; no aliancasoliveira.com o produto aparece normal.
   showOutOfStock: boolean
+  // Mostra o botão de modo claro/escuro. Só no oliveirajoias.com por enquanto.
+  hasThemeToggle: boolean
 }
 
 export const sites: Record<SiteKey, SiteConfig> = {
@@ -27,6 +29,7 @@ export const sites: Record<SiteKey, SiteConfig> = {
     whatsappNumber: '553497717779',
     whatsappDisplay: '(34) 9771-7779',
     showOutOfStock: true,
+    hasThemeToggle: true,
   },
   'aliancas-oliveira': {
     key: 'aliancas-oliveira',
@@ -37,6 +40,7 @@ export const sites: Record<SiteKey, SiteConfig> = {
     whatsappNumber: '5534998717389',
     whatsappDisplay: '(34) 99871-7389',
     showOutOfStock: false,
+    hasThemeToggle: false,
   },
 }
 

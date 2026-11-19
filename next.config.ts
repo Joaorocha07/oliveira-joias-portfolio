@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Só em dev: libera os subdomínios locais (ex.: aliancasoliveira.localhost)
+  // para o hot reload funcionar ao testar cada site separadamente.
+  allowedDevOrigins: ["*.localhost"],
   images: {
     remotePatterns: [
       {

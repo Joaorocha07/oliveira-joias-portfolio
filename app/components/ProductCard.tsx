@@ -15,7 +15,7 @@ export default function ProductCard({ product, showCategory = false, showOutOfSt
   const semEstoque = showOutOfStock && product.outOfStock
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+    <div className="group bg-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
       <Link href={href} className="block relative aspect-square overflow-hidden">
         {product.images[0] ? (
           <Image
@@ -41,7 +41,7 @@ export default function ProductCard({ product, showCategory = false, showOutOfSt
 
       <div className="p-3 sm:p-5">
         <Link href={href}>
-          <h3 className="font-serif text-dark text-sm sm:text-lg font-bold leading-tight hover:text-gold transition-colors mb-1 line-clamp-2">
+          <h3 className="font-serif text-ink text-sm sm:text-lg font-bold leading-tight hover:text-gold transition-colors mb-1 line-clamp-2">
             {product.name}
           </h3>
         </Link>
@@ -54,14 +54,14 @@ export default function ProductCard({ product, showCategory = false, showOutOfSt
 
         {product.installments && product.cashPrice && (
           <div className="mb-3 sm:mb-5 border-t border-gray-100 pt-2 sm:pt-4">
-            <p className="font-semibold text-dark text-xs sm:text-base">{product.installments}</p>
+            <p className="font-semibold text-ink text-xs sm:text-base">{product.installments}</p>
             <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-text/55">{product.cashPrice}</p>
           </div>
         )}
 
         <Link
           href={href}
-          className="flex items-center justify-center gap-1.5 w-full bg-dark hover:bg-gold hover:text-dark text-white text-xs sm:text-sm font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-xl transition-colors duration-200"
+          className="flex items-center justify-center gap-1.5 w-full bg-dark hover:bg-gold hover:text-dark text-white dark:ring-1 dark:ring-inset dark:ring-white/15 text-xs sm:text-sm font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-xl transition-colors duration-200"
         >
           Ver
           <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

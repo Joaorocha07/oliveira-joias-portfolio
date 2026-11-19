@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
+import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
   { href: '/', label: 'Início' },
@@ -69,15 +70,20 @@ export default function Navbar({ site }: { site: SiteConfig }) {
               ))}
             </nav>
 
+            <div className="hidden lg:flex items-center gap-3">
+            {site.hasThemeToggle && <ThemeToggle />}
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-2 border border-gold/60 hover:bg-gold hover:border-gold text-white hover:text-dark text-[13px] font-bold px-[17px] py-3 rounded-lg transition-all duration-200"
+              className="flex items-center gap-2 border border-gold/60 hover:bg-gold hover:border-gold text-white hover:text-dark text-[13px] font-bold px-[17px] py-3 rounded-lg transition-all duration-200"
             >
               ☏ Fale no WhatsApp
             </a>
+            </div>
 
+            <div className="flex items-center gap-1 lg:hidden">
+            {site.hasThemeToggle && <ThemeToggle />}
             <button
               onClick={() => setOpen((v) => !v)}
               className="lg:hidden text-white p-2"
@@ -85,6 +91,7 @@ export default function Navbar({ site }: { site: SiteConfig }) {
             >
               {open ? <XIcon /> : <MenuIcon />}
             </button>
+            </div>
           </div>
         </div>
 

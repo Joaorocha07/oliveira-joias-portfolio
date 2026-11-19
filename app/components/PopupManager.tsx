@@ -171,7 +171,7 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
         )}
 
         {/* Body */}
-        <div className="bg-white px-6 pt-5 pb-6">
+        <div className="bg-surface px-6 pt-5 pb-6">
           {/* Tipo badge */}
           <span className="inline-block text-[10px] font-semibold tracking-[1.5px] uppercase text-gold-dark/80 mb-2.5">
             {TIPO_BADGE[activePopup.tipo]}
@@ -179,7 +179,7 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
 
           <h2
             id="popup-titulo"
-            className="font-serif text-[1.3rem] font-bold text-dark leading-snug mb-2.5"
+            className="font-serif text-[1.3rem] font-bold text-ink leading-snug mb-2.5"
           >
             {activePopup.titulo}
           </h2>
@@ -196,7 +196,7 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closePopup}
-                    className="block text-center bg-dark hover:bg-gold hover:text-dark text-white font-semibold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide"
+                    className="block text-center bg-dark hover:bg-gold hover:text-dark text-white dark:ring-1 dark:ring-inset dark:ring-white/15 font-semibold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide"
                   >
                     {activePopup.cta_texto}
                   </a>
@@ -204,7 +204,7 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
                   <Link
                     href={activePopup.cta_url}
                     onClick={closePopup}
-                    className="block text-center bg-dark hover:bg-gold hover:text-dark text-white font-semibold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide"
+                    className="block text-center bg-dark hover:bg-gold hover:text-dark text-white dark:ring-1 dark:ring-inset dark:ring-white/15 font-semibold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide"
                   >
                     {activePopup.cta_texto}
                   </Link>
@@ -212,7 +212,7 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
               ) : (
                 <button
                   onClick={closePopup}
-                  className="w-full text-center bg-dark hover:bg-gold hover:text-dark text-white font-semibold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide"
+                  className="w-full text-center bg-dark hover:bg-gold hover:text-dark text-white dark:ring-1 dark:ring-inset dark:ring-white/15 font-semibold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide"
                 >
                   {activePopup.cta_texto}
                 </button>

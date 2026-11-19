@@ -58,7 +58,7 @@ function FilterSelect({
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full appearance-none text-sm border border-gray-200 rounded-lg px-3 py-2.5 pr-8 text-dark bg-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors cursor-pointer"
+          className="w-full appearance-none text-sm border border-gray-200 rounded-lg px-3 py-2.5 pr-8 text-ink bg-surface focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors cursor-pointer"
         >
           {children}
         </select>
@@ -135,7 +135,7 @@ export default function AliancasContent({ products, categorias, showOutOfStock }
   return (
     <>
       {/* Barra de filtros */}
-      <div className="bg-white border-b border-gray-100 shadow-sm">
+      <div className="bg-surface border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {/* Busca */}
@@ -155,7 +155,7 @@ export default function AliancasContent({ products, categorias, showOutOfStock }
                   value={busca}
                   onChange={(e) => setBusca(e.target.value)}
                   placeholder="Ex: Aurora, Classic, Lumina..."
-                  className="w-full text-sm border border-gray-200 rounded-lg pl-9 pr-3 py-2.5 text-dark placeholder-text/30 bg-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors"
+                  className="w-full text-sm border border-gray-200 rounded-lg pl-9 pr-3 py-2.5 text-ink placeholder-text/30 bg-surface focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors"
                 />
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function AliancasContent({ products, categorias, showOutOfStock }
           {/* Resultado + limpar */}
           <div className={`flex items-center justify-between mt-3 pt-3 border-t border-gray-50 transition-opacity ${hasActiveFilters ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <span className="text-xs text-text/50">
-              <span className="font-semibold text-dark">{filtered.length}</span>{' '}
+              <span className="font-semibold text-ink">{filtered.length}</span>{' '}
               {filtered.length === 1 ? 'modelo encontrado' : 'modelos encontrados'}
             </span>
             <button
@@ -223,7 +223,7 @@ export default function AliancasContent({ products, categorias, showOutOfStock }
             >
               {!hasActiveFilters && (
                 <div className="flex items-end justify-between mb-8 border-b border-gray-200 pb-4">
-                  <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-dark">
+                  <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-ink">
                     {group.subcategory ? `Linha ${group.subcategory}` : 'Todos os modelos'}
                   </h2>
                   <span className="text-text/40 text-sm">

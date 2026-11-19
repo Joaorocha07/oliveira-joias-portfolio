@@ -12,7 +12,7 @@ export default async function CategoriesSection() {
           <p className="text-gold text-sm tracking-widest uppercase font-medium mb-3">
             Explore
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-dark">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink">
             Categorias em Destaque
           </h2>
         </div>

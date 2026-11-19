@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import WhatsAppButton from '../components/WhatsAppButton'
 import PopupManager from '../components/PopupManager'
 import { getSite, sites } from '../lib/site'
+import { themeInitScript } from '../lib/theme'
 
 const playfair = Playfair_Display({
   variable: '--font-serif',
@@ -55,7 +56,14 @@ export async function generateMetadata({ params }: Pick<Props, 'params'>): Promi
 export default async function RootLayout({ children, params }: Props) {
   const site = getSite((await params).site)
   return (
-    <html lang="pt-BR" className={`${playfair.variable} ${inter.variable}`}>
+    // suppressHydrationWarning: o script de tema adiciona a classe .dark antes do React hidratar.
+    <html lang="pt-BR" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
+      {/* Modo claro/escuro só existe no Oliveira Joias. */}
+      {site.hasThemeToggle && (
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        </head>
+      )}
       <body className="min-h-screen flex flex-col bg-cream text-text antialiased" suppressHydrationWarning>
         <Navbar site={site} />
         <main className="flex-1 pt-[72px] sm:pt-[108px]">{children}</main>

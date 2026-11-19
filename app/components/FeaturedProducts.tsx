@@ -16,7 +16,7 @@ export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
           <p className="text-[11px] text-gold tracking-[0.2em] uppercase font-medium mb-3">
             Mais procurados
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] leading-[1.05] font-medium text-dark">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] leading-[1.05] font-medium text-ink">
             Os queridinhos dos nossos clientes
           </h2>
           <p className="text-text/60 mt-4 text-base">
@@ -28,7 +28,7 @@ export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
           {featured.map((p) => (
             <article
               key={p.id}
-              className="bg-white border border-gray-100 rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+              className="bg-surface border border-gray-100 rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
               <Link href={`/aliancas/${p.slug}`} className="relative block aspect-square overflow-hidden bg-gray-50">
                 {site.showOutOfStock && p.outOfStock && <OutOfStockRibbon />}
@@ -50,7 +50,7 @@ export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
                 <span className="text-[10px] text-gold-dark uppercase tracking-[0.14em] font-medium">
                   {p.material}
                 </span>
-                <h3 className="font-serif text-dark text-sm sm:text-xl font-semibold mt-1 sm:mt-1.5 mb-0.5 sm:mb-1 leading-snug line-clamp-2">
+                <h3 className="font-serif text-ink text-sm sm:text-xl font-semibold mt-1 sm:mt-1.5 mb-0.5 sm:mb-1 leading-snug line-clamp-2">
                   {p.name}
                 </h3>
                 {p.width && (
@@ -59,7 +59,7 @@ export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
 
                 {p.valor > 0 && (
                   <div className="mt-auto pt-2 sm:pt-4 border-t border-gray-50">
-                    <strong className="text-dark text-base sm:text-xl font-bold">
+                    <strong className="text-ink text-base sm:text-xl font-bold">
                       {formatBRL(p.valor)}
                     </strong>
                     {p.installments && (
@@ -72,7 +72,7 @@ export default async function FeaturedProducts({ site }: { site: SiteConfig }) {
 
                 <Link
                   href={`/aliancas/${p.slug}`}
-                  className="mt-3 sm:mt-4 block text-center bg-dark hover:bg-gold hover:text-dark text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl transition-all duration-200"
+                  className="mt-3 sm:mt-4 block text-center bg-dark hover:bg-gold hover:text-dark text-white dark:ring-1 dark:ring-inset dark:ring-white/15 text-xs sm:text-sm font-bold px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl transition-all duration-200"
                 >
                   Ver produto
                 </Link>
