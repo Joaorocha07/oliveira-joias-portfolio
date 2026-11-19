@@ -12,6 +12,7 @@ import { getSite } from '@/app/lib/site'
 import ImageGallery from '@/app/components/ImageGallery'
 import ProductCard from '@/app/components/ProductCard'
 import ProductDetailsInfo from '@/app/components/ProductDetailsInfo'
+import AdicionarAoCarrinho from '@/app/components/conta/AdicionarAoCarrinho'
 
 type Props = {
   params: Promise<{ site: string; slug: string }>
@@ -127,11 +128,21 @@ export default async function ProductPage({ params }: Props) {
                 </dl>
               </div>
 
+              {site.hasAccount && (
+                <div className="mt-auto">
+                  <AdicionarAoCarrinho
+                    slug={product.slug}
+                    nome={product.name}
+                    valor={product.valor}
+                    imagem={product.images[0] ?? null}
+                  />
+                </div>
+              )}
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold py-4 px-6 rounded-2xl transition-colors duration-200 text-base mt-auto"
+                className={`flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold py-4 px-6 rounded-2xl transition-colors duration-200 text-base ${site.hasAccount ? '' : 'mt-auto'}`}
                 aria-label={`Enviar mensagem no WhatsApp sobre ${product.name}`}
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

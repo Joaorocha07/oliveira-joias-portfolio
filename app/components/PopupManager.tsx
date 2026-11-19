@@ -1,14 +1,15 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { SiteConfig } from '@/app/lib/site'
+import LeadSignupForm from './LeadSignupForm'
 
 type SitePopup = {
   id: string
-  tipo: 'boas_vindas' | 'promocao' | 'saida'
+  tipo: 'boas_vindas' | 'promocao' | 'saida' | 'cadastro'
   titulo: string
   mensagem: string
   imagem_url: string | null
@@ -25,6 +26,7 @@ const TIPO_BADGE: Record<SitePopup['tipo'], string> = {
   boas_vindas: 'Boas-vindas',
   promocao: 'Oferta especial',
   saida: 'Antes de ir...',
+  cadastro: 'Exclusivo para você',
 }
 
 function todayStr() {
@@ -40,11 +42,32 @@ function markSeenToday(id: string) {
   try { localStorage.setItem(dayKey(id), todayStr()) } catch { /* noop */ }
 }
 
+// Pop-up de cadastro: quem se cadastrou nunca mais vê; quem fechou volta a ver
+// depois de alguns dias.
+const LEAD_OK_KEY = 'oj_lead_ok'
+const LEAD_DISMISS_KEY = 'oj_lead_dismiss'
+const LEAD_DISMISS_DAYS = 7
+function leadPopupBlocked(): boolean {
+  try {
+    if (localStorage.getItem(LEAD_OK_KEY)) return true
+    const dismissed = Number(localStorage.getItem(LEAD_DISMISS_KEY) ?? 0)
+    return Date.now() - dismissed < LEAD_DISMISS_DAYS * 86_400_000
+  } catch {
+    return false
+  }
+}
+
 export default function PopupManager({ site }: { site: SiteConfig }) {
   const pathname = usePathname()
   const [popups, setPopups] = useState<SitePopup[]>([])
   const [activePopup, setActivePopup] = useState<SitePopup | null>(null)
   const [visible, setVisible] = useState(false)
+  const [leadRegistered, setLeadRegistered] = useState(false)
+  // "Começou a navegar": rolou a página ou abriu outra página do site.
+  const [scrolled, setScrolled] = useState(false)
+  const [firstPath] = useState(pathname)
+  const engaged = scrolled || pathname !== firstPath
+  const mountedAt = useRef(0)
 
   const productSlug = pathname.match(/^\/aliancas\/([^/]+)$/)?.[1] ?? null
 
@@ -52,9 +75,26 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
     if (!BACKEND_URL) return
     fetch(`${BACKEND_URL}/api/popups/ativos`)
       .then((r) => r.json())
-      .then((json: { data: SitePopup[] }) => setPopups(json.data ?? []))
+      .then((json: { data: SitePopup[] }) =>
+        setPopups((json.data ?? []).filter((p) => p.tipo !== 'cadastro' || site.hasLeadPopup)),
+      )
       .catch(() => {})
+  }, [site.hasLeadPopup])
+
+  useEffect(() => {
+    mountedAt.current = Date.now()
   }, [])
+
+  useEffect(() => {
+    if (scrolled) return
+    const onScroll = () => { if (window.scrollY > 400) setScrolled(true) }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [scrolled])
+
+  const cadastroPopup = popups.find((p) => p.tipo === 'cadastro') ?? null
+  // Enquanto o visitante pode receber o pop-up de cadastro, ele substitui o de boas-vindas.
+  const cadastroElegivel = !!cadastroPopup && !leadPopupBlocked()
 
   const showPopup = useCallback((popup: SitePopup) => {
     if (wasSeenToday(popup.id)) return
@@ -63,18 +103,42 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
   }, [])
 
   const closePopup = useCallback(() => {
-    if (activePopup) markSeenToday(activePopup.id)
+    if (activePopup?.tipo === 'cadastro') {
+      if (!leadRegistered) {
+        try { localStorage.setItem(LEAD_DISMISS_KEY, String(Date.now())) } catch { /* noop */ }
+      }
+    } else if (activePopup) {
+      markSeenToday(activePopup.id)
+    }
     setVisible(false)
     setTimeout(() => setActivePopup(null), 250)
-  }, [activePopup])
+  }, [activePopup, leadRegistered])
+
+  const markLeadRegistered = useCallback(() => {
+    setLeadRegistered(true)
+    try { localStorage.setItem(LEAD_OK_KEY, '1') } catch { /* noop */ }
+  }, [])
+
+  // Cadastro (lead): quando o visitante começa a navegar, respeitando o tempo
+  // mínimo de página (delay configurado no sistema).
+  useEffect(() => {
+    if (!cadastroPopup || !cadastroElegivel || !engaged || activePopup) return
+    const elapsed = Date.now() - mountedAt.current
+    const wait = Math.max(0, (cadastroPopup.delay_segundos ?? 5) * 1000 - elapsed)
+    const timer = setTimeout(() => {
+      setActivePopup((prev) => prev ?? cadastroPopup)
+      setVisible(true)
+    }, wait)
+    return () => clearTimeout(timer)
+  }, [cadastroPopup, cadastroElegivel, engaged, activePopup])
 
   // Boas-vindas
   useEffect(() => {
     const popup = popups.find((p) => p.tipo === 'boas_vindas')
-    if (!popup || wasSeenToday(popup.id) || activePopup) return
+    if (!popup || cadastroElegivel || wasSeenToday(popup.id) || activePopup) return
     const timer = setTimeout(() => showPopup(popup), (popup.delay_segundos ?? 3) * 1000)
     return () => clearTimeout(timer)
-  }, [popups, activePopup, showPopup])
+  }, [popups, cadastroElegivel, activePopup, showPopup])
 
   // Promoção (produto específico)
   useEffect(() => {
@@ -187,7 +251,16 @@ export default function PopupManager({ site }: { site: SiteConfig }) {
             {activePopup.mensagem}
           </p>
 
-          {activePopup.cta_texto && (
+          {activePopup.tipo === 'cadastro' && (
+            <LeadSignupForm
+              site={site}
+              submitLabel={activePopup.cta_texto}
+              onRegistered={markLeadRegistered}
+              onClose={closePopup}
+            />
+          )}
+
+          {activePopup.tipo !== 'cadastro' && activePopup.cta_texto && (
             <div className="mt-5 flex flex-col items-stretch gap-2.5">
               {activePopup.cta_url ? (
                 isExternal ? (

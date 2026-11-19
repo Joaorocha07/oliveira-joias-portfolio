@@ -48,7 +48,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
       onClick={toggle}
       aria-label="Alternar modo claro/escuro"
       title="Alternar modo claro/escuro"
-      className={`grid h-10 w-10 place-items-center rounded-full border border-gold/40 text-gold transition-colors duration-200 hover:bg-gold hover:text-dark ${className}`}
+      className={`grid h-9 w-9 lg:h-10 lg:w-10 place-items-center rounded-full border border-gold/40 text-gold transition-colors duration-200 hover:bg-gold hover:text-dark ${className}`}
     >
       {/* Ícone escolhido por CSS (classe .dark), sem depender de estado no React. */}
       <SunIcon className="hidden h-5 w-5 dark:block" />

@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { type SiteConfig, whatsappUrl } from '@/app/lib/site'
 import ThemeToggle from './ThemeToggle'
+import { useCarrinho } from '@/app/lib/carrinho'
+import { useSessao } from '@/app/lib/sessao'
 
 const navLinks = [
   { href: '/', label: 'Início' },
@@ -72,6 +74,7 @@ export default function Navbar({ site }: { site: SiteConfig }) {
 
             <div className="hidden lg:flex items-center gap-3">
             {site.hasThemeToggle && <ThemeToggle />}
+            {site.hasAccount && <ContaIcons />}
             <a
               href={WA_URL}
               target="_blank"
@@ -84,6 +87,7 @@ export default function Navbar({ site }: { site: SiteConfig }) {
 
             <div className="flex items-center gap-1 lg:hidden">
             {site.hasThemeToggle && <ThemeToggle />}
+            {site.hasAccount && <ContaIcons />}
             <button
               onClick={() => setOpen((v) => !v)}
               className="lg:hidden text-white p-2"
@@ -120,6 +124,33 @@ export default function Navbar({ site }: { site: SiteConfig }) {
           </div>
         )}
       </header>
+    </>
+  )
+}
+
+function ContaIcons() {
+  const { quantidadeTotal } = useCarrinho()
+  const logado = useSessao()
+  const iconBtn =
+    'relative grid h-9 w-9 lg:h-10 lg:w-10 place-items-center rounded-full border border-gold/40 text-gold transition-colors duration-200 hover:bg-gold hover:text-dark'
+  return (
+    <>
+      <Link href={logado ? '/conta' : '/entrar'} className={iconBtn} aria-label={logado ? 'Minha conta' : 'Entrar'} title={logado ? 'Minha conta' : 'Entrar'}>
+        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.1a7.5 7.5 0 0115 0A17.9 17.9 0 0112 21.75c-2.68 0-5.22-.58-7.5-1.65z" />
+        </svg>
+        {logado && <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-whatsapp" aria-hidden="true" />}
+      </Link>
+      <Link href="/carrinho" className={iconBtn} aria-label={`Carrinho (${quantidadeTotal} itens)`} title="Carrinho">
+        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.36-1.99l1.26 12A1.13 1.13 0 0119.75 21.75H4.25a1.13 1.13 0 01-1.12-1.24l1.26-12A1.13 1.13 0 015.51 7.5h12.98c.58 0 1.06.44 1.12 1.01z" />
+        </svg>
+        {quantidadeTotal > 0 && (
+          <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-dark">
+            {quantidadeTotal}
+          </span>
+        )}
+      </Link>
     </>
   )
 }

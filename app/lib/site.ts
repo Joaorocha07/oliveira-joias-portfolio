@@ -17,6 +17,10 @@ export type SiteConfig = {
   showOutOfStock: boolean
   // Mostra o botão de modo claro/escuro. Só no oliveirajoias.com por enquanto.
   hasThemeToggle: boolean
+  // Exibe o pop-up de cadastro (lead + cupom), configurado em Pop-ups do Site no sistema.
+  hasLeadPopup: boolean
+  // Conta do cliente (login, perfil, cupons) e carrinho com pedido pelo WhatsApp.
+  hasAccount: boolean
 }
 
 export const sites: Record<SiteKey, SiteConfig> = {
@@ -30,6 +34,8 @@ export const sites: Record<SiteKey, SiteConfig> = {
     whatsappDisplay: '(34) 9771-7779',
     showOutOfStock: true,
     hasThemeToggle: true,
+    hasLeadPopup: true,
+    hasAccount: true,
   },
   'aliancas-oliveira': {
     key: 'aliancas-oliveira',
@@ -41,6 +47,8 @@ export const sites: Record<SiteKey, SiteConfig> = {
     whatsappDisplay: '(34) 99871-7389',
     showOutOfStock: false,
     hasThemeToggle: false,
+    hasLeadPopup: false,
+    hasAccount: false,
   },
 }
 
