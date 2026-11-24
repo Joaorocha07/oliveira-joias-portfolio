@@ -135,6 +135,9 @@ export default async function ProductPage({ params }: Props) {
                     nome={product.name}
                     valor={product.valor}
                     imagem={product.images[0] ?? null}
+                    aros={product.aros}
+                    arosPar={product.arosPar}
+                    whatsappHref={whatsappUrl}
                   />
                 </div>
               )}

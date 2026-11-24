@@ -65,7 +65,7 @@ export default function CarrinhoView({ site }: { site: SiteConfig }) {
     setErro(null)
     setEnviando(true)
     const r = await enviar<PedidoCriado>('/api/conta/pedidos', 'POST', {
-      itens: itens.map((i) => ({ slug: i.slug, quantidade: i.quantidade, observacao: i.observacao || undefined })),
+      itens: itens.map((i) => ({ slug: i.slug, quantidade: i.quantidade, observacao: i.observacao || undefined, aros: i.aros })),
       cupom_id: cupomId || null,
       observacoes: observacoes.trim() || undefined,
     })
@@ -191,10 +191,15 @@ function ItemLinha({ item, index }: { item: ItemCarrinho; index: number }) {
           </Link>
           <p className="flex-shrink-0 font-semibold text-ink">{formatBRL(item.valor * item.quantidade)}</p>
         </div>
+        {item.aros && item.aros.length > 0 && (
+          <p className="-mt-1 text-xs font-medium text-text/60">
+            {item.aros.length === 2 ? `Aros ${item.aros[0]} e ${item.aros[1]}` : `Aro ${item.aros[0]}`}
+          </p>
+        )}
         <input
           value={item.observacao}
           onChange={(e) => alterarObservacao(index, e.target.value)}
-          placeholder="Numeração / gravação (ex.: Ele 20 · Ela 16)"
+          placeholder={item.aros?.length ? 'Gravação (opcional)' : 'Numeração / gravação (ex.: Ele 20 · Ela 16)'}
           maxLength={200}
           className="w-full rounded-lg border border-gray-200 bg-surface px-3 py-2 text-xs text-ink placeholder-text/35 focus:border-gold focus:outline-none"
         />

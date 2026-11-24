@@ -12,6 +12,8 @@ export type ItemCarrinho = {
   imagem: string | null
   quantidade: number
   observacao: string
+  /** Aros escolhidos (1 ou 2). Ausente em produtos sem seleção de aro. */
+  aros?: number[]
 }
 
 const KEY = 'oj_carrinho'
@@ -58,9 +60,11 @@ export function useCarrinho() {
   }
 }
 
+const mesmosAros = (a?: number[], b?: number[]) => (a ?? []).join(',') === (b ?? []).join(',')
+
 export function adicionarAoCarrinho(item: Omit<ItemCarrinho, 'quantidade' | 'observacao'>, quantidade = 1, observacao = '') {
   const itens = [...ler()]
-  const idx = itens.findIndex((i) => i.slug === item.slug && i.observacao === observacao)
+  const idx = itens.findIndex((i) => i.slug === item.slug && i.observacao === observacao && mesmosAros(i.aros, item.aros))
   if (idx >= 0) itens[idx] = { ...itens[idx]!, quantidade: Math.min(20, itens[idx]!.quantidade + quantidade) }
   else itens.push({ ...item, quantidade, observacao })
   gravar(itens)

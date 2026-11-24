@@ -1,6 +1,8 @@
 import { fetchAllProducts, fetchProductBySlug } from './api'
 import { type SiteConfig, whatsappUrl } from './site'
 
+export type AroDisponivel = { aro: number; qtd: number }
+
 export type FaqItem = { pergunta: string; resposta: string }
 
 export type Product = {
@@ -20,6 +22,10 @@ export type Product = {
   videos?: string[]
   featured: boolean
   outOfStock: boolean
+  /** Aros oferecidos (qtd até 2). Vazio = produto sem seleção de aro. */
+  aros: AroDisponivel[]
+  /** true = escolhe 2 aros (par de alianças). */
+  arosPar: boolean
   ordem: number | null
   info_produto: string | null
   voce_sabia: string | null

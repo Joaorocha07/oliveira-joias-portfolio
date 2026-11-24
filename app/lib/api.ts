@@ -64,6 +64,9 @@ type ApiProduto = {
   destaque: boolean
   // Opcional: o backend só passa a enviar após a migration 012.
   sem_estoque?: boolean
+  // Opcionais: só existem após a migration 015.
+  aros?: Array<{ aro: number; estoque: number }>
+  aros_par?: boolean
   ordem: number | null
   info_produto: string | null
   voce_sabia: string | null
@@ -96,6 +99,8 @@ function mapProduct(p: ApiProduto): Product {
     images: p.imagens,
     featured: p.destaque,
     outOfStock: p.sem_estoque ?? false,
+    aros: (p.aros ?? []).map((a) => ({ aro: a.aro, qtd: Math.min(Math.max(a.estoque, 0), 2) })),
+    arosPar: p.aros_par !== false,
     ordem: p.ordem,
     info_produto: p.info_produto ?? null,
     voce_sabia: p.voce_sabia ?? null,
